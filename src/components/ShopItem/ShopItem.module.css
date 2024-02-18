@@ -1,0 +1,31 @@
+@import "../../index.css";
+
+
+.itemContainer {
+    padding: 30px;
+    box-shadow: inset #e1efee -1500px 1px 1px 1px;
+    border-radius: 10px;
+    list-style: none;
+}
+
+.thumbnailPhoto {
+    height: 300px;
+    border-radius: 10px;
+}
+
+.titlePriceContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+}
+
+.title {
+    font-weight: bold;
+    font-variant: small-caps;
+}

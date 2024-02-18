@@ -1,0 +1,18 @@
+[
+    {
+        "title" : "Delivery",
+        "description" : "Worldwide free shipping for purchases over 200$!",
+        "imgUrl": "src/assets/images/delivery-icon.svg"
+    },
+    {
+        "title" : "Warranty",
+        "description": "12 month warranty for all our products!",
+        "imgUrl": "src/assets/images/warranty-icon.svg"
+    },
+    {
+        "title": "Support",
+        "description": "Our support is working 24/7. Need help? Get in touch with our customer service by email:",
+        "email" : "customer-service@example.com",
+        "imgUrl": "src/assets/images/email-icon.svg"
+    }
+]

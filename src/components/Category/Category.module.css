@@ -1,0 +1,22 @@
+@import "../../index.css";
+
+.categoryBtn {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    padding: 10px;
+    background: gainsboro;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    font-variant: small-caps;
+}
+
+.categoryBtn:hover {
+    background: slategrey;
+    color: white;
+}
+
+.categoryBtn:active {
+    scale: 0.9;
+}

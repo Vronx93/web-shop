@@ -1,0 +1,10 @@
+@import "../../index.css";
+
+.footer {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    margin-top: 200px;
+    background: #19555f;
+}

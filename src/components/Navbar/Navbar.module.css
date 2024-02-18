@@ -1,0 +1,7 @@
+@import "../../index.css";
+
+.navbar {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}

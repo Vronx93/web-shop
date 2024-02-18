@@ -1,0 +1,8 @@
+@import "../../index.css";
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #8fb5b5;
+}

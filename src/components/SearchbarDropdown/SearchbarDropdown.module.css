@@ -1,0 +1,31 @@
+@import "../../index.css";
+
+.dropdownContainer {
+    position: absolute;
+    left: 21px;
+    width: 80%;
+}
+
+.dropdownList {
+    background: rgb(235, 246, 246);
+    list-style: none;
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 2px;
+    border: none;
+}
+
+.dropdownEl:nth-child(odd) {
+    background: rgb(231 239 239);
+}
+
+.dropdownEl {
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dropdownEl:hover {
+    background: #8fb5b5;
+    color: white;
+}

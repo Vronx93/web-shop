@@ -1,0 +1,15 @@
+@import "../../index.css";
+
+.categoriesContainer {
+    display: flex;
+    background: #f1f7f7;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 10px;
+}
