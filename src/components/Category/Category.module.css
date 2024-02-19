@@ -5,16 +5,17 @@
     height: 100%;
     border-radius: 3px;
     padding: 10px;
-    background: gainsboro;
-    border: none;
+    background: black;
+    border: 1px solid white;
+    color: white;
     cursor: pointer;
     transition: 0.2s;
     font-variant: small-caps;
 }
 
 .categoryBtn:hover {
-    background: slategrey;
-    color: white;
+    background: white;
+    color: black;
 }
 
 .categoryBtn:active {

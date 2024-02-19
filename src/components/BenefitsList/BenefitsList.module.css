@@ -3,11 +3,13 @@
 .benefitContainer {
     display: flex;
     align-items: center;
+    border-radius: 10px;
     justify-content: space-evenly;
     flex-direction: column;
     width: 350px;
     height: 350px;
-    box-shadow: #71cecf 0px 0px 3px 1px;
+    background: white;
+    box-shadow: black inset 0px 0px 15px 5px;
     padding: 40px;
 }
 
@@ -15,11 +17,20 @@
     width: 100px;
 }
 
+.list li:nth-child(even) {
+    background: transparent;
+    color: white;
+    margin-top: -100px;
+    box-shadow: #ffffff inset 3px 3px 15px -8px;
+}
+
 .list {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    background: black;
+    padding: 200px;
+    gap: 100px;
     margin-top: 250px;
 }
 
@@ -27,7 +38,3 @@
     font-weight: bold;
     align-self: flex-start;
 }
-
-/* .list li:nth-child(even) {
-    margin-top: -150px;
-} */

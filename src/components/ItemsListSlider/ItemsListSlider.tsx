@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { Key, useRef } from "react"
 import ShopItem from "../ShopItem/ShopItem"
 import styles from "./ItemsListSlider.module.css"
 
 export default function ItemsListSlider({shopItemsData}: any) {
     const itemsSlider = useRef(null)
-    const renderedItems = shopItemsData?.map((item, index) => 
+    const renderedItems = shopItemsData?.map((item: any, index: Key | null | undefined) => 
         <ShopItem
             key={index} 
             itemData={item}
@@ -32,7 +32,7 @@ export default function ItemsListSlider({shopItemsData}: any) {
                 onClick={handlePrevClick}
                 className={styles.prevBtn}
             >
-                Prev
+                <img src="src/assets/images/left-arrow.svg" alt="Left arrow" />
             </button>
             <ul ref={itemsSlider} className={styles.list}>
                 {renderedItems}
@@ -41,7 +41,7 @@ export default function ItemsListSlider({shopItemsData}: any) {
                 onClick={handleNextClick}
                 className={styles.nextBtn}
             >
-                Next
+                <img src="src/assets/images/right-arrow.svg" alt="Right arrow" />
             </button>
             
         </div>

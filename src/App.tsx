@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Layout from "./components/Layout/Layout"
 import Home, {loader as homeLoader} from "./pages/Home/Home"
+import ShopItemView from "./pages/ShopItemView/ShopItemView"
 
 
 const router = createBrowserRouter([
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
         loader: homeLoader
+      },
+      {
+        path: "product/:id",
+        element: <ShopItemView />
       }
     ]
   }

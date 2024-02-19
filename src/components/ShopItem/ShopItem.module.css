@@ -3,7 +3,7 @@
 
 .itemContainer {
     padding: 30px;
-    box-shadow: inset #e1efee -1500px 1px 1px 1px;
+    box-shadow: black 0px 0px 25px -20px;
     border-radius: 10px;
     list-style: none;
 }
