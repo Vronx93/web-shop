@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./SearchbarDropdown.module.css"
 import { getShopItemById } from "../../api";
+import { Link } from "react-router-dom";
 
 
 export default function SearchbarDropdown(
@@ -44,7 +45,9 @@ export default function SearchbarDropdown(
             className={styles.dropdownEl}
             onClick={(event => handleDropdownElClick(event))}
         >
-            <p>{product?.title}</p>
+            <Link state={product} to={`/product/${product.id}`}>
+                <p>{product?.title}</p>
+            </Link>      
         </li>)
 
 

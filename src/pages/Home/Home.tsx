@@ -21,7 +21,6 @@ export default function Home() {
     const {dataPromise} = useLoaderData()
     // console.log("itemTitlePromise: ", dataPromise)
 
-    
     return (
         <>
             <Hero />

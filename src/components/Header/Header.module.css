@@ -4,5 +4,11 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    background: #8fb5b5;
+    background: #000000;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 36px;
 }

@@ -41,7 +41,7 @@ export default function Searchbar() {
                     placeholder="Search items..."
                 >
                 </input>
-                <button className={styles.searchBtn}><img src="src/assets/images/search-icon.svg" alt="Search icon" /></button>
+                <button className={styles.searchBtn}><img src="../../src/assets/images/search-icon.svg" alt="Search icon" /></button>
             </form>
             {isDropdownActive &&
             <SearchbarDropdown 

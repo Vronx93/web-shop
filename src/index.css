@@ -11,3 +11,7 @@ body {
   position: relative;
   font-family: sans-serif;
 }
+
+.button:disabled {
+  cursor: not-allowed;
+}
