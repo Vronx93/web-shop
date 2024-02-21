@@ -103,3 +103,17 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+@keyframes rotateAnimation {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.closeBtn:hover {
+    animation: rotateAnimation 1s forwards;
+}
+
+.errorMsg {
+    color: red;
+    margin-bottom: 20px;
+}

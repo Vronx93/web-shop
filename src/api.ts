@@ -1,4 +1,3 @@
-import { FormProps } from "react-router-dom"
 import { FormData } from "./components/Login/Login"
 
 export async function getShopItemById(id : number) {
@@ -38,12 +37,31 @@ export async function LoginUser({formData} : { formData : FormData}) {
           password: formData.password,
         })
       })
-      const data = await response.json()
-      console.log(data)
       if(!response.ok) {
+        const data = await response.json()
         throw{
-            message: data.message
+            message: data.message,
+            statusText: response.statusText,
+            status: response.status
         }
       }
-      return data
+      console.log(response.headers)
+      return response
 }
+
+// export async function authRequired() {
+//     const response = await fetch('https://dummyjson.com/auth/me', {
+//         method: 'GET',
+//         headers: {
+//             'Authorization': 'Bearer', 
+//         }, 
+//     })
+//     if(!response.ok) {
+//         // const data = response.json()
+//         console.log("Fail auth response", response)
+//         throw redirect("/")
+        
+//     }
+//     console.log("Success auth response", response)
+//     return response
+// }

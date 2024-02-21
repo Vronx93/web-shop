@@ -1,0 +1,22 @@
+@import "../../index.css";
+
+.logoutBtn {
+    background: #000000;
+    color: white;
+    border: white solid 2px;
+    border-radius: 2px;
+    padding-block: 10px;
+    padding-inline: 20px;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.logoutBtn:hover {
+    background: #b60909;
+    color: white;
+}
+
+.logoutBtn:active {
+    background: #b60909;
+    scale: 0.96;
+}
