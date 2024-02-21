@@ -1,0 +1,81 @@
+@import "../../index.css";
+
+.shoppingBagBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.shoppingBagBtn img {
+    width: 42px;
+}
+
+.dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: 200px;
+    min-width: fit-content;
+    min-height: fit-content;
+    margin-top: 10px;
+    padding-block: 30px;
+    padding-inline: 20px;
+    right: 40px;
+    border-radius: 2px;
+    box-shadow: black 1px 1px 5px -2px;
+    z-index: 3;
+}
+
+.bagEl {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.bagElContainer {
+    list-style: none;
+}
+
+.checkoutBtnsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.checkoutBtnsContainer button {
+    background: #e91b1b;
+    color: white;
+    border: white solid 2px;
+    border-radius: 2px;
+    padding-block: 10px;
+    padding-inline: 20px;
+    font-size: 16px;
+    box-shadow: 1px 2px 4px 0px black;
+    border: none;
+    transition: 0.2s;
+}
+
+.checkoutBtnsContainer button:hover {
+    background: #b60909;
+    color: white;
+}
+
+.checkoutBtnsContainer button:active {
+    background: #b60909;
+    scale: 0.96;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 20px;
+}

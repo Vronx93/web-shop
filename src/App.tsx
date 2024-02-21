@@ -4,6 +4,7 @@ import Home, {loader as homeLoader} from "./pages/Home/Home"
 import ShopItemView from "./pages/ShopItemView/ShopItemView"
 
 
+
 const router = createBrowserRouter([
   {
     path : "/",
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: "product/:id",
-        element: <ShopItemView />
+        element: <ShopItemView />,
       }
     ]
   }

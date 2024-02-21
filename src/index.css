@@ -12,10 +12,12 @@ body {
   font-family: sans-serif;
 }
 
-button {
-  font-family: sans-serif;
-}
-
 .button:disabled {
   cursor: not-allowed;
 }
+
+button {
+  font-family: sans-serif;
+  min-width: fit-content;
+}
+
