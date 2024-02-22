@@ -7,7 +7,7 @@ export default function ShoppingBag() {
     const [isDropdownActive, setIsDropdownActive] = useState(false)
     const [totalPrice, setTotalPrice] = useState(0)
     const {isLoggedIn} = useContext(isLoggedInContext)
-    const {bagItems} = useContext(BagItemsContext)
+    const {bagItems, setBagItems} = useContext(BagItemsContext)
     const dropdownRef = useRef(null)
     const dropdownBtnRef = useRef(null)
 
@@ -16,7 +16,6 @@ export default function ShoppingBag() {
         if(bagItems.length > 0){
             for(let i = 0; i < bagItems.length; i++) {
                 totalPrice += bagItems[i].price * bagItems[i].quantity
-                console.log("getTotalPrice", bagItems[i].price, bagItems[i].quantity)
             } 
         } return totalPrice
     }
@@ -44,22 +43,29 @@ export default function ShoppingBag() {
         }, [dropdownRef, dropdownBtnRef, closeDropdownOnOutsideClick]
     )
     
-    
     const displayItems = bagItems
         .map((item) =>
         <li className={styles.bagElContainer} key={item.id}>
             <p className={styles.bagEl}>
                 <span>{item.title}</span>
                 <span>{item.quantity}</span>
-                <span>${item.price}</span>
+                <span>${item.price*item.quantity}</span>
+                <img id={item.id} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt="Remove icon" />
             </p>
         </li>
     )
 
-
     function handleBagClick() {
             setIsDropdownActive(!isDropdownActive)
     }
+
+    function handleRemoveIconClick(event) {
+        setBagItems(prevBagItems => prevBagItems.filter((item) => item.id !== parseInt(event.target.id)))
+    }
+
+    useEffect(() => {
+        localStorage.setItem("bagItems", JSON.stringify(bagItems))
+    }, [bagItems])
 
     return(
         <div>

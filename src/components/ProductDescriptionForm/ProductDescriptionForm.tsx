@@ -7,7 +7,7 @@ export default function ProductDescription() {
     const {bagItems, setBagItems} = useContext(BagItemsContext)
     const locationData = useLocation()
     console.log("LocationData", locationData.state)
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
 
     function handleInputChange(event : any) {
         setQuantity(parseInt(event.target.value))
@@ -16,7 +16,7 @@ export default function ProductDescription() {
     function handleSubmit(event: any) {
         event.preventDefault()
         setBagItems((prevBagItems) => {
-            const existingItem = prevBagItems.find((bagItem) => bagItem.id === locationData.state.id);
+            const existingItem = prevBagItems.find((bagItem) => bagItem.id === locationData.state.id)
 
             if (existingItem) {
                 return prevBagItems.map((bagItem) =>
@@ -33,7 +33,6 @@ export default function ProductDescription() {
     useEffect(() => {
         localStorage.setItem("bagItems", JSON.stringify(bagItems))
     }, [bagItems])
-        console.log("NewBagItems", bagItems)
     
 
     return(
@@ -46,6 +45,7 @@ export default function ProductDescription() {
                 <div className={styles.inputContainer}>
                     <label htmlFor="quantity">Quantity:</label>
                     <input onChange={(event) => handleInputChange(event)} id="quantity" type="number" value={quantity}/>
+                    <p>Total price: ${locationData.state.price * quantity}</p>
                 </div>
                 <button className={styles.shopBtn}>
                     Add to <img className={styles.shopBag} src="../../src/assets/images/shop-bag.svg" alt="Shopping bag" />

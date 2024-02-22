@@ -38,6 +38,7 @@
 .bagEl {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
 }
 
@@ -78,4 +79,10 @@
 .total {
     font-weight: bold;
     margin-top: 20px;
+}
+
+.trashIcon {
+    height: 25px;
+    justify-self: flex-end;
+    cursor: pointer;
 }
