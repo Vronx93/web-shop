@@ -2,32 +2,18 @@ import { useLocation } from "react-router-dom"
 import styles from "./ProductDescriptionForm.module.css"
 import { useContext, useEffect, useState } from "react"
 import { BagItemsContext } from "../../contexts/bagItemsContext"
+import AddToBagBtn from "../AddToBagBtn/AddToBagBtn"
+import { Product } from "../SearchResults/SearchResults"
 
 export default function ProductDescription() {
-    const {bagItems, setBagItems} = useContext(BagItemsContext)
+    const {bagItems} = useContext(BagItemsContext)
     const locationData = useLocation()
     console.log("LocationData", locationData.state)
     const [quantity, setQuantity] = useState(1)
+    const product : Product = locationData.state.item
 
     function handleInputChange(event : any) {
         setQuantity(parseInt(event.target.value))
-    }
-
-    function handleSubmit(event: any) {
-        event.preventDefault()
-        setBagItems((prevBagItems) => {
-            const existingItem = prevBagItems.find((bagItem) => bagItem.id === locationData.state.id)
-
-            if (existingItem) {
-                return prevBagItems.map((bagItem) =>
-                    bagItem.id === locationData.state.id
-                        ? { ...bagItem, quantity: quantity + bagItem.quantity }
-                        : bagItem
-                )
-            } else {
-                return [...prevBagItems, { id: locationData.state.id, title: locationData.state.title, quantity: quantity, price: locationData.state.price }]
-            }
-        })
     }
 
     useEffect(() => {
@@ -38,19 +24,20 @@ export default function ProductDescription() {
     return(
         <div className={styles.descriptionContainer}>
             <form 
-                onSubmit={(event) => handleSubmit(event)} 
                 method="post"
                 className={styles.form}
             >
                 <div className={styles.inputContainer}>
                     <label htmlFor="quantity">Quantity:</label>
-                    <input onChange={(event) => handleInputChange(event)} id="quantity" type="number" value={quantity}/>
-                    <p>Total price: ${locationData.state.price * quantity}</p>
+                    <input onChange={(event) => handleInputChange(event)} id="quantity" type="number" value={quantity} required min={1}/>
+                    <p>Total price: ${product.price * quantity}</p>
                 </div>
-                <button className={styles.shopBtn}>
-                    Add to <img className={styles.shopBag} src="../../src/assets/images/shop-bag.svg" alt="Shopping bag" />
-                </button>
+                <AddToBagBtn 
+                    product = {product}
+                    quantity = {quantity}
+                />
             </form>
+            <p>{product.description}</p>
         </div>
     )
 }

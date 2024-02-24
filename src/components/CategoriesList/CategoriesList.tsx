@@ -12,10 +12,6 @@ export default function CategoriesList() {
                 setCategoryData(resolvedData))
     }, [])
 
-    // console.log("categoryData", categoryData)
-    
-
-
     const categories = categoryData?.map((cat : string) =>
         <Category
             key={cat}

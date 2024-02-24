@@ -6,6 +6,11 @@
     box-shadow: black 0px 0px 25px -20px;
     border-radius: 10px;
     list-style: none;
+    transition: 0.2s;
+}
+
+.itemContainer:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .thumbnailPhoto {
@@ -18,6 +23,15 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+}
+
+.itemContainer a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
 }
 
 .price {

@@ -4,13 +4,14 @@ import ProductDescriptionForm from "../../components/ProductDescriptionForm/Prod
 
 export default function ShopItemView() {
     const locationData = useLocation()
+    const data = locationData.state.item
 
-    console.log("ShopItemViewLocationData", locationData)
+    console.log("ShopItemViewLocationData", locationData.state, data)
     return(
         <>
             <ProductImages
-                imgUrls={locationData.state.images} 
-                itemName={locationData.state.title}
+                imgUrls={data.images} 
+                itemName={data.title}
             />
             <ProductDescriptionForm />   
         </>
