@@ -22,7 +22,7 @@ export async function getProductByCategory(category : string) {
 }
 
 export async function searchProduct(query : string) {
-    const response = await fetch(`https://dummyjson.com/products/search?q=${query}`)
+    const response = await fetch(`https://dummyjson.com/products/search?q=${query}&limit=0`)
     const data = response.json()
     console.log("search products", data)
     return data
@@ -49,19 +49,3 @@ export async function LoginUser({formData} : { formData : FormData}) {
       return response
 }
 
-// export async function authRequired() {
-//     const response = await fetch('https://dummyjson.com/auth/me', {
-//         method: 'GET',
-//         headers: {
-//             'Authorization': 'Bearer', 
-//         }, 
-//     })
-//     if(!response.ok) {
-//         // const data = response.json()
-//         console.log("Fail auth response", response)
-//         throw redirect("/")
-        
-//     }
-//     console.log("Success auth response", response)
-//     return response
-// }

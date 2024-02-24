@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function usePagination(arr : any[], itemsPerPage: number) {
+interface PaginationProps {
+    arr? : any[] | JSX.Element [],
+    itemsPerPage? : number
+}
+
+
+export default function usePagination({arr = [], itemsPerPage = 1} : PaginationProps = {}) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const currentPage = arr[currentIndex]
     const firstPage = currentIndex < 1
@@ -10,6 +16,7 @@ export default function usePagination(arr : any[], itemsPerPage: number) {
     const prevPage = () => setCurrentIndex(prevCurrentIndex => prevCurrentIndex -= 1)
     return {
         currentIndex,
+        setCurrentIndex,
         currentPage,
         nextPage,
         prevPage,

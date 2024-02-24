@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import styles from "./ShopItem.module.css"
-
-
+import { Link } from "react-router-dom"
 
 export default function ShopItem({ itemData} : { itemData: any}) {
     const [data, setData] = useState(itemData)
@@ -11,20 +10,20 @@ export default function ShopItem({ itemData} : { itemData: any}) {
             setData(resolvedData))
     }, [data])
 
-    // console.log("stateData", data)
-
-    // console.log("shopItemComponentParam", itemData)
+    console.log("DATADATA", data)
 
     return(
         <li 
             className={styles.itemContainer}
             tabIndex={0}
         >
-            <img className={styles.thumbnailPhoto} src={data.thumbnail} alt="" />
-            <div className={styles.titlePriceContainer}>
-                <span className={styles.title}>{data.title}</span>
-                <span className={styles.price}>${data.price}</span>
-            </div>
+            <Link to={`/product/${data.id}`} state={{item: data}}>
+                <img className={styles.thumbnailPhoto} src={data.thumbnail} alt="" />
+                <div className={styles.titlePriceContainer}>
+                    <span className={styles.title}>{data.title}</span>
+                    <span className={styles.price}>${data.price}</span>
+                </div>
+            </Link>
         </li>
     )
 }

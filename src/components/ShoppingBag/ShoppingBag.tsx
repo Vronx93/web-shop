@@ -1,12 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import styles from "./ShoppingBag.module.css"
-import { isLoggedInContext } from "../../contexts/isLoggedInContext"
+// import { isLoggedInContext } from "../../contexts/isLoggedInContext"
 import { BagItemsContext } from "../../contexts/bagItemsContext"
+import { Link } from "react-router-dom"
 
 export default function ShoppingBag() {
     const [isDropdownActive, setIsDropdownActive] = useState(false)
     const [totalPrice, setTotalPrice] = useState(0)
-    const {isLoggedIn} = useContext(isLoggedInContext)
+    // const {isLoggedIn} = useContext(isLoggedInContext)
     const {bagItems, setBagItems} = useContext(BagItemsContext)
     const dropdownRef = useRef(null)
     const dropdownBtnRef = useRef(null)
@@ -42,16 +43,18 @@ export default function ShoppingBag() {
             }
         }, [dropdownRef, dropdownBtnRef, closeDropdownOnOutsideClick]
     )
-    
+
     const displayItems = bagItems
         .map((item) =>
-        <li className={styles.bagElContainer} key={item.id}>
-            <p className={styles.bagEl}>
-                <span>{item.title}</span>
-                <span>{item.quantity}</span>
-                <span>${item.price*item.quantity}</span>
-                <img id={item.id} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt="Remove icon" />
-            </p>
+        <li key={item.id} className={styles.listItemContainer}>
+            <Link to={`/product/${item.id}`} state={{item: item}} className={styles.bagElContainer}>
+                <div className={styles.bagEl}>
+                    <span>{item.title}</span>
+                    <span>{item.quantity}</span>
+                    <span className={styles.price}>${item.price*item.quantity}</span>
+                </div>
+            </Link>
+            <img id={item.id} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt="Remove icon" />
         </li>
     )
 
