@@ -1,18 +1,50 @@
-import { useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { Product } from "../SearchResults/SearchResults"
 import styles from "./ResultsFilters.module.css"
 
-export default function ResultsFilters(products : Product[]) {
+export default function ResultsFilters(
+    {
+        products, 
+        setSortedResults,
+        sortedResults
+    } 
+    : 
+    {
+        products : Product[] | undefined, 
+        setSortedResults: React.Dispatch<SetStateAction<Product[] | undefined>>,
+        sortedResults: Product[] | undefined
+    }) {
     const options = ["-", "Ascending", "Descending"]
     const [selectedPrice, setSelectedPrice] = useState(options[0])
-
+    console.log("SELECTED", selectedPrice)
     const renderOptions = options.map((option) =>
-        <option value={option}>{option}</option>
+        <option key={option} value={option}>{option}</option>
         )
+
+    function sortResults({products, selectedPrice} : {products: Product[] | undefined, selectedPrice : string}) {
+        let sortedProducts : Product[] | undefined = undefined
+        console.log("SORTED PRODUCTS", sortedProducts)
+        if(selectedPrice === "Ascending") {
+            sortedProducts = products?.sort((a, b) => a.price - b.price)
+        } else if(selectedPrice === "Descending") {
+            sortedProducts = products?.sort((a, b) => b.price - a.price)
+        } else {
+            sortedProducts = products?.sort((a, b) => a.id - b.id)
+        }
+        return sortedProducts
+    }
+    
+    useEffect(() => {
+        const sorted = sortResults({products: products, selectedPrice: selectedPrice})
+        setSortedResults(sorted ? [...sorted] : undefined)
+        console.log("USE EFFEECT SORTED", sortedResults)
+    }, [selectedPrice])
+        
+
     return(
         <div className={styles.filtersContainer}>
-            <label htmlFor="sortByPrice">Sort by:</label>
-            <select id="sortByPrice" defaultValue={selectedPrice}>
+            <label htmlFor="sortByPrice">Sort by price</label>
+            <select id="sortByPrice" value={selectedPrice} onChange={(event) => setSelectedPrice(event.target.value)}>
                 {renderOptions}
             </select>
         </div>

@@ -10,8 +10,6 @@ export default function ShopItem({ itemData} : { itemData: any}) {
             setData(resolvedData))
     }, [data])
 
-    console.log("DATADATA", data)
-
     return(
         <li 
             className={styles.itemContainer}

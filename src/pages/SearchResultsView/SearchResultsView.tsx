@@ -1,8 +1,8 @@
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import SearchResults from "../../components/SearchResults/SearchResults";
 
 export async function loader() {
-    console.log()
+    console.log("loader")
 }
 
 export default function SearchResultsView() {
@@ -11,7 +11,7 @@ export default function SearchResultsView() {
     return(
         <>
             <SearchResults
-                searchFor = {params.get("q")}
+                searchFor = {params?.get("q")}
             />
         </>
     )
