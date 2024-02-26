@@ -17,17 +17,13 @@ export default function ProductImages({imgUrls, itemName, toPage = 0} : ProductI
         </li>
     )
     const currentUrl = useParams()
-    const {currentPage, currentIndex, setCurrentIndex, nextPage, prevPage, firstPage, lastPage, isOnlyOnePage} = usePagination({arr: images, itemsPerPage: 1})
+    const {renderPage, setCurrentIndex, nextPage, prevPage, firstPage, lastPage, isOnlyOnePage} = usePagination({arr: images, itemsPerPage: 1})
 
-    
+    // set starting image to be always first image (toPage)
     useEffect(() => {
         setCurrentIndex(toPage)
     }, [currentUrl])
     
-    
-
-    console.log("CURRENT PAGE", currentIndex)
-
     return(
         <div className={styles.mainImgContainer}>
             <div className={styles.imgWithBtns}>
@@ -42,7 +38,7 @@ export default function ProductImages({imgUrls, itemName, toPage = 0} : ProductI
                     </button>
                 }
                 <ul className={styles.list}>
-                    {currentPage}
+                    {renderPage()}
                 </ul>
                 {
                     !isOnlyOnePage &&

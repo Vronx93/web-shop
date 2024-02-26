@@ -6,11 +6,6 @@ import { isLoggedInContext } from "../../contexts/isLoggedInContext"
 import { useEffect, useState } from "react"
 import { BagItemsContext } from "../../contexts/bagItemsContext"
 
-export type BagItem = {
-    id: number,
-    quantity: number
-}
-
 export default function Layout() {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
     const [bagItems, setBagItems] = useState(JSON.parse(localStorage.getItem("bagItems") || "[]"))
@@ -28,7 +23,7 @@ export default function Layout() {
     return(
         <div className={styles.siteWrapper}>
             <isLoggedInContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
-                <BagItemsContext.Provider value={{bagItems, setBagItems} }>
+                <BagItemsContext.Provider value={{bagItems, setBagItems}}>
                         <Header />
                     <main>
                         <Outlet/>

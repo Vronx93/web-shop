@@ -62,7 +62,7 @@ export default function ShoppingBag() {
             setIsDropdownActive(!isDropdownActive)
     }
 
-    function handleRemoveIconClick(event) {
+    function handleRemoveIconClick(event : any) {
         setBagItems(prevBagItems => prevBagItems.filter((item) => item.id !== parseInt(event.target.id)))
     }
 
