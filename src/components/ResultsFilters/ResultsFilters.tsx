@@ -10,19 +10,18 @@ export default function ResultsFilters(
     } 
     : 
     {
-        products : Product[] | undefined, 
-        setSortedResults: React.Dispatch<SetStateAction<Product[] | undefined>>,
-        sortedResults: Product[] | undefined
+        products? : Product[] | null, 
+        setSortedResults: React.Dispatch<SetStateAction<Product[] | null>>,
+        sortedResults: Product[] | null
     }) {
     const options = ["-", "Ascending", "Descending"]
     const [selectedPrice, setSelectedPrice] = useState(options[0])
-    console.log("SELECTED", selectedPrice)
     const renderOptions = options.map((option) =>
         <option key={option} value={option}>{option}</option>
         )
 
-    function sortResults({products, selectedPrice} : {products: Product[] | undefined, selectedPrice : string}) {
-        let sortedProducts : Product[] | undefined = undefined
+    function sortResults({products, selectedPrice} : {products: Product[] | null | undefined, selectedPrice : string}) {
+        let sortedProducts : Product[] | null | undefined= null
         console.log("SORTED PRODUCTS", sortedProducts)
         if(selectedPrice === "Ascending") {
             sortedProducts = products?.sort((a, b) => a.price - b.price)
@@ -36,7 +35,7 @@ export default function ResultsFilters(
     
     useEffect(() => {
         const sorted = sortResults({products: products, selectedPrice: selectedPrice})
-        setSortedResults(sorted ? [...sorted] : undefined)
+        setSortedResults(sorted ? [...sorted] : null)
         console.log("USE EFFEECT SORTED", sortedResults)
     }, [selectedPrice])
         

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import styles from "./SearchResults.module.css"
-import { searchProduct } from "../../api"
+import { getProductByCategory, searchProduct } from "../../api"
 import SearchEl from "../SearchEl/SearchEl"
 import ResultsFilters from "../ResultsFilters/ResultsFilters"
 import usePagination from "../../hooks/usePagination"
+import CategoriesList from "../CategoriesList/CategoriesList"
 
 export type Product = {
     id: number,
@@ -16,7 +17,8 @@ export type Product = {
     brand: string,
     category: string,
     thumbnail: string,
-    images: string []
+    images: string [],
+    quantity: number
 }
 
 export type SearchResults = {
@@ -26,28 +28,46 @@ export type SearchResults = {
     total: number[]
 }
 
-export default function SearchResults({searchFor} : {searchFor: string | null}) {
+interface SearchResultsProps {
+    searchFor : string | null,
+    category? : string | null,
+    itemsData?: Product[]
+}
+
+export default function SearchResults({searchFor, category, itemsData} : SearchResultsProps) {
     const [result, setResult] = useState<SearchResults | null>(null)
-    const [sortedResults, setSortedResults] = useState<undefined | Product[]>(undefined)
+    const [sortedResults, setSortedResults] = useState<null | Product[]>(null)
+    // const [isCategoriesDropdownActive, setIsCategoriesDropdownActive] = useState(false)
 
     useEffect(() => {
         async function loadResults() {
             const search = await searchProduct(searchFor)
-            setResult(search)
-        }
-        loadResults()
-    }, [searchFor])
+            const categorySearch = await getProductByCategory(category)
 
-    const renderElements = sortedResults ? 
+            if(searchFor) {
+                setResult(search)
+            } else if(category) {
+                setResult(categorySearch)
+            } else {
+                setResult(null)
+            }
+        }
+    loadResults()
+    }, [searchFor, category])
+
+    const renderElements : JSX.Element [] | JSX.Element = sortedResults ? 
         sortedResults.map((el) => (
-        <SearchEl key={el.id} el={el} />
-        )) 
-        :  
-        result?.products && result.products?.length > 0 ? 
-        result.products.map((el) => (
-        <SearchEl key={el.id} el={el} />
-        ))
-        : <p>Loading...</p> 
+            <SearchEl key={el.id} el={el} />
+            )) 
+            :  
+            result?.products && result.products?.length > 0 ? 
+                result.products.map((el) => (
+                    <SearchEl key={el.id} el={el} />
+            ))
+        // : <p>Loading...</p> 
+            : itemsData ? itemsData.map((itemData) => 
+                <SearchEl key={itemData.id} el={itemData}/>)
+                : <p>No results match this search. Try again or contact with our support.</p>
 
     const {        
         currentIndex,
@@ -57,7 +77,7 @@ export default function SearchResults({searchFor} : {searchFor: string | null}) 
         lastPage,
         isOnlyOnePage,
         renderPage,
-        totalPages} = usePagination({arr: renderElements, itemsPerPage: 10})
+        allPages} = usePagination({arr: renderElements, itemsPerPage: 10})
 
     useEffect(()=>{
         window.scrollTo({top: 0})
@@ -65,19 +85,36 @@ export default function SearchResults({searchFor} : {searchFor: string | null}) 
 
     return(
         <div className={styles.listContainer}>
-            <ResultsFilters
-                products = {result?.products} 
-                setSortedResults={setSortedResults}
-                sortedResults={sortedResults}
-            />
             <ul className={styles.resultsList}>
-                {renderPage()}
+                {result ? renderPage() : <p>Loading...</p> }
             </ul>
             <div className={styles.pageCounterContainer}>
                 {!firstPage && <button onClick={prevPage}>Back</button>}
-                <p>{`${currentIndex + 1}/${totalPages()}`}</p>
+                <p>{`Page: ${currentIndex + 1}`}{!isOnlyOnePage && <span>/{allPages}</span>}</p>
                 {!isOnlyOnePage && !lastPage && <button onClick={nextPage}>Next</button>}
             </div>
         </div>
-    )
+        )
 }
+
+
+
+
+
+
+/* {isCategoriesDropdownActive && <CategoriesList />} */
+/* {
+    isCategoriesDropdownActive && 
+    <ResultsFilters
+        products = {result?.products} 
+        setSortedResults={setSortedResults}
+        sortedResults={sortedResults}
+    />
+} */
+/* <button 
+    onClick={() => setIsCategoriesDropdownActive(!isCategoriesDropdownActive)}
+>
+    {
+        isCategoriesDropdownActive ? "Hide filters" : "Show filters"
+    }
+</button> */

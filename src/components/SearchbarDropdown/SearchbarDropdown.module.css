@@ -7,7 +7,7 @@
 }
 
 .dropdownList {
-    background: rgb(235, 246, 246);
+    background: rgb(255, 255, 255);
     list-style: none;
     max-height: 300px;
     overflow: auto;
@@ -15,9 +15,10 @@
     border: none;
 }
 
-.dropdownEl:nth-child(odd) {
-    background: rgb(231 239 239);
-}
+/* .dropdownEl:nth-child(odd) {
+    background: rgb(255, 255, 255);
+    color:
+} */
 
 .dropdownEl {
     padding: 10px;
@@ -26,6 +27,11 @@
 }
 
 .dropdownEl:hover {
-    background: #8fb5b5;
+    background: rgba(0, 0, 0, 0.2);
     color: white;
+}
+
+.dropdownEl a {
+    text-decoration: none;
+    color: black
 }

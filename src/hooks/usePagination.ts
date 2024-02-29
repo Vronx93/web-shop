@@ -12,6 +12,7 @@ export default function usePagination({arr, itemsPerPage = 1} : PaginationProps)
     const nextPage = () => setCurrentIndex(prevCurrentIndex => prevCurrentIndex += 1)
     const prevPage = () => setCurrentIndex(prevCurrentIndex => prevCurrentIndex -= 1)
     const totalPages = () => Math.ceil(arr.length / itemsPerPage)
+    const allPages = totalPages()
     const lastPage = currentIndex === totalPages() - 1 
     const isOnlyOnePage = totalPages() <= 1
     const renderPage = () => {
@@ -30,6 +31,7 @@ export default function usePagination({arr, itemsPerPage = 1} : PaginationProps)
         lastPage,
         isOnlyOnePage,
         renderPage,
-        totalPages
+        totalPages,
+        allPages
     }
 }
