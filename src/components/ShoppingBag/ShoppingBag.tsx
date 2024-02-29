@@ -1,14 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import {  useContext, useEffect, useRef, useState } from "react"
 import styles from "./ShoppingBag.module.css"
-// import { isLoggedInContext } from "../../contexts/isLoggedInContext"
-import { BagItemsContext } from "../../contexts/bagItemsContext"
+import { BagItemsContext, BagItemsContextInterface } from "../../contexts/bagItemsContext"
 import { Link } from "react-router-dom"
+import { Product } from "../SearchResults/SearchResults"
 
 export default function ShoppingBag() {
     const [isDropdownActive, setIsDropdownActive] = useState(false)
     const [totalPrice, setTotalPrice] = useState(0)
-    // const {isLoggedIn} = useContext(isLoggedInContext)
-    const {bagItems, setBagItems} = useContext(BagItemsContext)
+    const {bagItems, setBagItems} = useContext<BagItemsContextInterface | []>(BagItemsContext)
     const dropdownRef = useRef(null)
     const dropdownBtnRef = useRef(null)
 
@@ -45,7 +44,7 @@ export default function ShoppingBag() {
     )
 
     const displayItems = bagItems
-        .map((item) =>
+        .map((item : Product) =>
         <li key={item.id} className={styles.listItemContainer}>
             <Link to={`/product/${item.id}`} state={{item: item}} className={styles.bagElContainer}>
                 <div className={styles.bagEl}>
@@ -54,7 +53,7 @@ export default function ShoppingBag() {
                     <span className={styles.price}>${item.price*item.quantity}</span>
                 </div>
             </Link>
-            <img id={item.id} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt="Remove icon" />
+            <img id={(item.id).toString()} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt="Remove icon" />
         </li>
     )
 
@@ -63,7 +62,7 @@ export default function ShoppingBag() {
     }
 
     function handleRemoveIconClick(event : any) {
-        setBagItems(prevBagItems => prevBagItems.filter((item) => item.id !== parseInt(event.target.id)))
+        setBagItems((prevBagItems: Product [] | []) => prevBagItems.filter((item : Product) => item.id !== parseInt(event.target.id)))
     }
 
     useEffect(() => {
@@ -87,15 +86,12 @@ export default function ShoppingBag() {
                         {displayItems}
                     </ul>
                     <p className={styles.total}>Total: ${totalPrice}</p>
-                    <div className={styles.checkoutBtnsContainer}>
-                        <button>Show my bag</button>
-                        <button>Checkout</button>
-                    </div>
+                    <Link className={styles.checkoutBtn} to="/checkout">Checkout</Link>
                 </div>
                 :
                 isDropdownActive && 
                 <div className={styles.dropdown}>
-                    <p>You didn't put any items to your shopping bag yet.</p>
+                    <p>You don't have any items in your shopping bag.</p>
                 </div>
             }
         </div>

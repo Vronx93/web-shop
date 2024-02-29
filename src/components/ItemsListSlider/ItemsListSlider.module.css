@@ -17,6 +17,21 @@
     border-radius: 5px;
 }
 
+.list::before {
+    content: "Trending now";
+    font-size: 32px;
+    align-items: center;
+    font-style: italic;
+    position: absolute;
+    font-weight: 700;
+    margin-top: -60px;
+    color: white;
+    background: black;
+    rotate: -9deg;
+    box-shadow: 5px 5px 5px 0px black;
+    padding: 10px;
+}
+
 .nextBtn {
     position: absolute;
     margin-top: 130px;

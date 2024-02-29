@@ -41,3 +41,15 @@
 .form {
     display: flex;
 }
+
+.categoriesBtn {
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: none;
+    border-right: 1px solid rgb(200, 197, 197);
+    cursor: pointer;
+}

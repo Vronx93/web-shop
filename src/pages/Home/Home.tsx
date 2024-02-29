@@ -19,12 +19,11 @@ export async function loader() {
 
 export default function Home() {
     const {dataPromise} = useLoaderData()
-    // console.log("itemTitlePromise: ", dataPromise)
+    console.log("itemTitlePromise: ", dataPromise)
 
     return (
         <>
             <Hero />
-            <CategoriesList />
             <Suspense fallback={<h2>Loading shop items...</h2>}>
                 <Await resolve={dataPromise}>
                     {(resolvedData) => (

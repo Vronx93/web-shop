@@ -72,11 +72,14 @@
     margin-top: 30px;
 }
 
-.checkoutBtnsContainer button {
+.checkoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #e91b1b;
     color: white;
-    border: white solid 2px;
     border-radius: 2px;
+    text-decoration: none;
     padding-block: 10px;
     padding-inline: 20px;
     font-size: 16px;
@@ -86,12 +89,12 @@
     cursor: pointer;
 }
 
-.checkoutBtnsContainer button:hover {
+.checkoutBtn:hover {
     background: #b60909;
     color: white;
 }
 
-.checkoutBtnsContainer button:active {
+.checkoutBtn:active {
     background: #b60909;
     scale: 0.96;
 }

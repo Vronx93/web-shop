@@ -9,18 +9,19 @@ export async function getShopItemById(id : number) {
 
 export async function getAllCategories() {
     const response = await fetch("https://dummyjson.com/products/categories")
-    const data = response.json()
-    // console.log("allCategoriesApiData", data)
+    const data = await response.json()
+    console.log("allCategoriesApiData", data)
     return data
 }
 
-export async function getProductByCategory(category : string) {
+export async function getProductByCategory(category : string | null | undefined) {
     const response = await fetch(`https://dummyjson.com/products/category/${category}`)
     const data = response.json()
     console.log("getItemsByCategoryApi", data)
     return data
 }
 
+// | undefined
 export async function searchProduct(query : string | null) {
     const response = await fetch(`https://dummyjson.com/products/search?q=${query}&limit=0`)
     const data = response.json()
