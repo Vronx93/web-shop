@@ -1,20 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./SearchbarDropdown.module.css"
 import { getShopItemById } from "../../api";
 import { Link } from "react-router-dom";
+import { Product } from "../SearchResults/SearchResults";
 
 
 export default function SearchbarDropdown(
     {searchData, isDropdownActive, setIsDropdownActive, setInputValue} 
     : 
-    { searchData : {products : {}} | null, setIsDropdownActive: any, isDropdownActive : boolean, setInputValue : any}) 
+    { searchData : {products : {}[]} | null, setIsDropdownActive: any, isDropdownActive : boolean, setInputValue : any}) 
     {
 
     const searchbarData : any = searchData?.products
     const dropdownRef = useRef(null)
     console.log("searchDatainDropdown", searchbarData)
 
-    function handleDropdownElClick(event) {
+    function handleDropdownElClick(event : any) {
         setInputValue(event.currentTarget?.title)
         setIsDropdownActive(false)
         const item = getShopItemById(event.currentTarget?.id)

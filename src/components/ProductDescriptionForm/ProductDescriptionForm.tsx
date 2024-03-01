@@ -10,7 +10,7 @@ export default function ProductDescription() {
     const locationData = useLocation()
     console.log("LocationData", locationData.state)
     const [quantity, setQuantity] = useState(1)
-    const product : Product = locationData.state.item
+    const product : Product = locationData.state
 
     function handleInputChange(event : any) {
         setQuantity(parseInt(event.target.value))

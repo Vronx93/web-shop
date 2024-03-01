@@ -1,2 +1,15 @@
 @import "../../index.css";
 
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    margin-top: 100px;
+    max-width: 960px;
+}
+
+.total {
+    margin-top: 50px;
+    font-weight: bold;
+}

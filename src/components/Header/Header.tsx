@@ -9,7 +9,7 @@ import ShoppingBag from "../ShoppingBag/ShoppingBag"
 
 export default function Header() {
     const {isLoggedIn} = useContext(isLoggedInContext)
-
+    
     return(
         <>
             <header className={styles.header}>

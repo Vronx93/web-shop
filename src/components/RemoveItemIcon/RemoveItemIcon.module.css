@@ -1,0 +1,12 @@
+@import "../../index.css";
+
+.trashIcon {
+    height: 25px;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+}
+
+.trashIcon:hover {
+    scale: 1.05
+}

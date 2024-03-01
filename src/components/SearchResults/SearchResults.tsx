@@ -81,7 +81,7 @@ export default function SearchResults({searchFor, category, itemsData} : SearchR
 
     useEffect(()=>{
         window.scrollTo({top: 0})
-    },[currentIndex])
+    },[currentIndex, searchFor, category])
 
     return(
         <div className={styles.listContainer}>

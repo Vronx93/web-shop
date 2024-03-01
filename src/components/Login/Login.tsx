@@ -63,6 +63,7 @@ export default function Login() {
                                 type="text" 
                                 autoFocus 
                                 placeholder="Username..."
+                                defaultValue="kminchelle"
                             />
                         </div>
                         <div className={styles.inputContainer}>
@@ -72,6 +73,7 @@ export default function Login() {
                                 id="password" 
                                 type="password" 
                                 placeholder="Password..."
+                                defaultValue="0lelplR"
                             />
                         </div>
                         <button type="submit" className={styles.loginFormBtn}>Log in</button>

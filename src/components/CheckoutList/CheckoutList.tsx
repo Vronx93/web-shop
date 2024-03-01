@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import styles from "./CheckoutList.module.css"
+import { useContext} from "react"
 import { BagItemsContext } from "../../contexts/bagItemsContext"
 import CheckoutItem from "../CheckoutItem/CheckoutItem"
 import { Product } from "../SearchResults/SearchResults"
+import useTotalPrice from "../../hooks/useTotalPrice"
+import styles from "./CheckoutList.module.css"
 
 export default function CheckoutList() {
     const {bagItems} = useContext(BagItemsContext)
-
-    console.log(bagItems)
+    const totalPrice = useTotalPrice()
 
     const renderElements = bagItems.map((item : Product) =>
         <CheckoutItem 
@@ -17,8 +17,11 @@ export default function CheckoutList() {
     )
 
     return(
-        <ul>
-            {renderElements}
-        </ul>
+        <>
+            <ul className={styles.list}>
+                {renderElements}
+            </ul>
+            <p className={styles.total}>Total: ${totalPrice}</p>
+        </>
     )
 }
