@@ -1,0 +1,13 @@
+@import "../../index.css";
+
+.listItem {
+    display: grid;
+}
+
+.question {
+    font-size: 14px;
+}
+
+.answer {
+    font-size: 12px;
+}

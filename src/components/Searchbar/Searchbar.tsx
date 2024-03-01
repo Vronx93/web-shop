@@ -15,6 +15,7 @@ export default function Searchbar() {
     const debouncedValue = useDebounce(inputValue, 500)
     const url = useLocation()
     console.log("url", url)
+    console.log("SEARCH RESULT", searchResult)
 
     // useEffect(() => {
     //     function closeOnOutsideClick(event : any) {

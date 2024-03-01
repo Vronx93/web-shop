@@ -6,15 +6,16 @@
     border-radius: 10px;
     justify-content: space-evenly;
     flex-direction: column;
-    width: 350px;
-    height: 350px;
+    min-width: 300px;
+    min-height: 250px;
+    max-width: 300px;
     background: white;
-    box-shadow: black inset 0px 0px 15px 5px;
+    box-shadow: black inset 0px 0px 15px 0px;
     padding: 40px;
 }
 
 .benefitContainer img {
-    width: 100px;
+    width: 35px;
 }
 
 .list li:nth-child(even) {
@@ -36,5 +37,21 @@
 
 .email {
     font-weight: bold;
+    font-size: 14px;
     align-self: flex-start;
+}
+
+.titleImgWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.text {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.title {
+    font-size: 18px;
 }

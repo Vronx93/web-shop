@@ -5,13 +5,13 @@ import { useEffect } from "react"
 
 export default function ShopItemView() {
     const locationData = useLocation()
-    const data = locationData.state.item
+    const data = locationData.state
     
     useEffect(()=>{
         window.scrollTo({top: 0})
     },[])
 
-    console.log("ShopItemViewLocationData", locationData.state, data)
+    console.log("ShopItemViewLocationData", data)
     return(
         <>
             <ProductImages

@@ -1,12 +1,14 @@
-import { useContext } from "react"
-import { BagItemsContextInterface, BagItemsContext } from "../../contexts/bagItemsContext"
-import CheckoutList from "../../components/CheckoutList/CheckoutList"
+import CheckoutForm from "../../components/CheckoutForm/CheckoutForm"
+import { useEffect } from "react"
 
 export default function Checkout() {
+    useEffect(()=>{
+        window.scrollTo({top: 0})
+    },[])
 
     return(
         <>
-            <CheckoutList />
+            <CheckoutForm />
         </>
     )
 }
