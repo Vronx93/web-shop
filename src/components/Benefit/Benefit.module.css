@@ -1,0 +1,41 @@
+@import "../../index.css";
+
+.benefitContainer {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    flex-direction: column;
+    min-width: 300px;
+    min-height: 250px;
+    max-width: 300px;
+    background: white;
+    box-shadow: black inset 0px 0px 15px 0px;
+    padding: 40px;
+}
+
+.benefitContainer img {
+    width: 35px;
+}
+
+.email {
+    font-weight: bold;
+    font-size: 14px;
+    align-self: flex-start;
+}
+
+.titleImgWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.text {
+    font-size: 14px;
+    font-style: italic;
+    width: 80%;
+}
+
+.title {
+    font-size: 18px;
+}
