@@ -1,0 +1,35 @@
+@import "../../index.css";
+
+.purchaseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e91b1b;
+    color: white;
+    border-radius: 2px;
+    text-decoration: none;
+    padding-block: 20px;
+    padding-inline: 40px;
+    margin-top: 100px;
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    box-shadow: 1px 2px 4px 0px black;
+    border: none;
+    transition: 0.2s;
+    cursor: pointer;
+    width: 100%;
+    min-width: 500px;
+    max-width: 860px;
+}
+
+.purchaseBtn:hover {
+    background: #b60909;
+    color: white;
+}
+
+.purchaseBtn:active {
+    background: #b60909;
+    scale: 0.96;
+    box-shadow: none;
+}
