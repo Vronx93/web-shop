@@ -50,6 +50,7 @@
 .text {
     font-size: 14px;
     font-style: italic;
+    width: 80%;
 }
 
 .title {

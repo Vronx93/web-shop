@@ -21,7 +21,12 @@ export default function CheckoutList() {
             <ul className={styles.list}>
                 {renderElements}
             </ul>
-            <p className={styles.total}>Total: ${totalPrice}</p>
+            {
+                renderElements.length > 0 ? 
+                    <p className={styles.total}>Total: ${totalPrice}</p>
+                    : 
+                    <h2>You don't have any items in your shopping bag yet.</h2>
+            }
         </>
     )
 }

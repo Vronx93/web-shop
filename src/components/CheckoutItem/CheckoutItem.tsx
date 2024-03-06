@@ -35,7 +35,7 @@ export default function CheckoutItem({item} : CheckoutItemProps) {
     
     return(
         <li className={styles.listItem} key={item.id}>
-            <Link to={`/product/${item.id}`} state={{item : item}}>
+            <Link to={`/product/${item.id}`} state={item}>
                 <img className={styles.thumbnail} src={item.thumbnail} alt={item.title} />
                 <h2>{item.title}</h2>
             </Link>
