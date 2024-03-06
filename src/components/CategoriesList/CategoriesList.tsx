@@ -44,6 +44,7 @@ export default function CategoriesList({containerClassName, listStyle, isDropdow
             name={cat}
             setIsDropdownActive={setIsDropdownActive}
         />)
+
     return(
         <div ref={categoriesRef} className={containerStyle}>
             <ul className={ulStyle}>
