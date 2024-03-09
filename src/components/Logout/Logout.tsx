@@ -1,9 +1,8 @@
-import { useContext } from "react"
 import styles from "./Logout.module.css"
-import { isLoggedInContext } from "../../contexts/isLoggedInContext"
+import { useIsLoggedInContext } from "../../contexts/IsLoggedInContext"
 
 export default function Logout() {
-    const {setIsLoggedIn} = useContext(isLoggedInContext)
+    const {setIsLoggedIn} = useIsLoggedInContext()
     function handleLogoutClick() {
         localStorage.removeItem("isLoggedIn")
         setIsLoggedIn(false)

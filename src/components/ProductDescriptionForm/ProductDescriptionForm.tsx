@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom"
 import styles from "./ProductDescriptionForm.module.css"
-import { useContext, useEffect, useState } from "react"
-import { BagItemsContext } from "../../contexts/bagItemsContext"
+import { useEffect, useState } from "react"
+import { useBagItemsContext } from "../../contexts/BagItemsContext"
 import AddToBagBtn from "../AddToBagBtn/AddToBagBtn"
 import { Product } from "../SearchResults/SearchResults"
 
 export default function ProductDescription() {
-    const {bagItems} = useContext(BagItemsContext)
+    const {bagItems} = useBagItemsContext()
     const locationData = useLocation()
     console.log("LocationData", locationData.state)
     const [quantity, setQuantity] = useState(1)

@@ -1,10 +1,7 @@
 @import "../../index.css";
 
 .footer {
-    display: flex;
     bottom: 0;
     width: 100%;
-    min-height: 200px;
     margin-top: 200px;
-    background: rgba(0, 0, 0, 0.5);
 }

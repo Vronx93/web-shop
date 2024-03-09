@@ -2,13 +2,12 @@ import { Link } from "react-router-dom"
 import Searchbar from "../Searchbar/Searchbar"
 import styles from "./Header.module.css"
 import Login from "../Login/Login"
-import { useContext } from "react"
-import { isLoggedInContext } from "../../contexts/isLoggedInContext"
+import { useIsLoggedInContext } from "../../contexts/IsLoggedInContext"
 import Logout from "../Logout/Logout"
 import ShoppingBag from "../ShoppingBag/ShoppingBag"
 
 export default function Header() {
-    const {isLoggedIn} = useContext(isLoggedInContext)
+    const {isLoggedIn} = useIsLoggedInContext()
     
     return(
         <>

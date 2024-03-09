@@ -1,9 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./SearchbarDropdown.module.css"
-import { getShopItemById } from "../../api";
 import { Link } from "react-router-dom";
 import { Product } from "../SearchResults/SearchResults";
-
 
 export default function SearchbarDropdown(
     {searchData, isDropdownActive, setIsDropdownActive, setInputValue} 
@@ -13,13 +11,10 @@ export default function SearchbarDropdown(
 
     const searchbarData : any = searchData?.products
     const dropdownRef = useRef(null)
-    console.log("searchDatainDropdown", searchbarData)
 
     function handleDropdownElClick(event : any) {
         setInputValue(event.currentTarget?.title)
         setIsDropdownActive(false)
-        const item = getShopItemById(event.currentTarget?.id)
-        console.log("found", item )
     }
 
     function closeDropdownOnOutsideClick(event : any) {
@@ -38,10 +33,10 @@ export default function SearchbarDropdown(
         }, [dropdownRef, closeDropdownOnOutsideClick]
     )
 
-    const dropdownEl = searchbarData?.map((product, index) =>
+    const dropdownEl = searchbarData?.map((product : Product, index : number) =>
         <li 
             key={index}
-            id={product?.id}
+            id={product?.id.toString()}
             title={product?.title}
             className={styles.dropdownEl}
             onClick={(event => handleDropdownElClick(event))}
