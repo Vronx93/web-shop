@@ -1,20 +1,18 @@
 import StripeCheckout from "react-stripe-checkout"
-import { useContext } from "react";
-import { BagItemsContext } from "../../contexts/bagItemsContext";
+import { useBagItemsContext } from "../../contexts/BagItemsContext";
 import styles from "./StripeCheckoutBtn.module.css"
 import useTotalPrice from "../../hooks/useTotalPrice";
 import { useNavigate } from "react-router-dom";
 
 export default function StripeCheckoutBtn() {
-    const {bagItems, setBagItems} = useContext(BagItemsContext)
+    const {bagItems, setBagItems} = useBagItemsContext()
     const navigate = useNavigate();
     const handleToken = (token : {}) => {
         // You can handle the token received from Stripe here
-        // navigate to success
-        // remove items from the bag
+        // navigate to success?
         console.log("TOKEN", token);
         if(token) {
-            setBagItems([])
+            setBagItems([]) // remove items from the bag
             // navigate("/")
             alert("Your order was created successfully. Thank you for testing :)")
         }

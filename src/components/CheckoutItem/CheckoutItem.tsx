@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Product } from "../SearchResults/SearchResults"
-import { useContext, useEffect, useState } from "react"
-import { BagItemsContext } from "../../contexts/bagItemsContext"
+import { useEffect, useState } from "react"
+import { useBagItemsContext } from "../../contexts/BagItemsContext"
 import RemoveItemIcon from "../RemoveItemIcon/RemoveItemIcon"
 import styles from "./CheckoutItem.module.css"
 
@@ -10,12 +10,12 @@ export interface CheckoutItemProps {
 }
 
 export default function CheckoutItem({item} : CheckoutItemProps) {
-    const {bagItems, setBagItems} = useContext(BagItemsContext)
+    const {bagItems, setBagItems} = useBagItemsContext()
     const [quantity, setQuantity] = useState(item.quantity)
     console.log(quantity)
     console.log("ID", item.id)
 
-    function handleQuantityChange(event) {
+    function handleQuantityChange(event : any) {
         setQuantity(parseInt(event.currentTarget.value))
         setBagItems((prevBagItems) => {
             const updatedBagItems = prevBagItems.map((prevItem) => {

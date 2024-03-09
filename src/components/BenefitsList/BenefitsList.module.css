@@ -3,7 +3,6 @@
 .list li:nth-child(even) {
     background: transparent;
     color: white;
-    margin-top: -100px;
     box-shadow: #ffffff inset 3px 3px 15px -8px;
 }
 

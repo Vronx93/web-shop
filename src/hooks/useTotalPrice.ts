@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react"
-import { BagItemsContext } from "../contexts/bagItemsContext"
+import { useEffect, useState } from "react"
+import { useBagItemsContext } from "../contexts/BagItemsContext"
 
 export default function useTotalPrice() {
-    const {bagItems} = useContext(BagItemsContext)
+    const {bagItems} = useBagItemsContext()
     const [totalPrice, setTotalPrice] = useState(0)
 
     function getTotalPrice() {

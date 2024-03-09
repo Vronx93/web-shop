@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useState } from "react"
 import styles from "./Login.module.css"
 import { LoginUser } from "../../api"
-import { isLoggedInContext } from "../../contexts/isLoggedInContext"
+import { useIsLoggedInContext } from "../../contexts/IsLoggedInContext"
 
 //add if logged in show Log out instead of Log in, add register
 export type FormData = {
@@ -13,7 +13,7 @@ export default function Login() {
     const [isLoginVisible, setIsLoginVisible] = useState(false)
     const [formData, setFormData] = useState<FormData>({username: "kminchelle", password: "0lelplR"})
     const [errorMessage, setErrorMessage] = useState<string | null >(null)
-    const {setIsLoggedIn} = useContext(isLoggedInContext)
+    const {setIsLoggedIn} = useIsLoggedInContext()
 
     function handleInputChange(e : any) {
             if(e?.target?.id === "username") {

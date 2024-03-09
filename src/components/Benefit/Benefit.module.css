@@ -3,7 +3,7 @@
 .benefitContainer {
     display: flex;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 20%;
     justify-content: space-evenly;
     flex-direction: column;
     min-width: 300px;

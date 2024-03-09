@@ -2,9 +2,7 @@ import { useEffect, useState } from "react"
 import styles from "./SearchResults.module.css"
 import { getProductByCategory, searchProduct } from "../../api"
 import SearchEl from "../SearchEl/SearchEl"
-import ResultsFilters from "../ResultsFilters/ResultsFilters"
 import usePagination from "../../hooks/usePagination"
-import CategoriesList from "../CategoriesList/CategoriesList"
 
 export type Product = {
     id: number,
@@ -96,25 +94,3 @@ export default function SearchResults({searchFor, category, itemsData} : SearchR
         </div>
         )
 }
-
-
-
-
-
-
-/* {isCategoriesDropdownActive && <CategoriesList />} */
-/* {
-    isCategoriesDropdownActive && 
-    <ResultsFilters
-        products = {result?.products} 
-        setSortedResults={setSortedResults}
-        sortedResults={sortedResults}
-    />
-} */
-/* <button 
-    onClick={() => setIsCategoriesDropdownActive(!isCategoriesDropdownActive)}
->
-    {
-        isCategoriesDropdownActive ? "Hide filters" : "Show filters"
-    }
-</button> */

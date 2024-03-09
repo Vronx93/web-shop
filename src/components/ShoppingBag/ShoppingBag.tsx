@@ -1,6 +1,6 @@
-import {  useContext, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styles from "./ShoppingBag.module.css"
-import { BagItemsContext, BagItemsContextInterface } from "../../contexts/bagItemsContext"
+import { useBagItemsContext } from "../../contexts/BagItemsContext"
 import { Link } from "react-router-dom"
 import { Product } from "../SearchResults/SearchResults"
 import RemoveItemIcon from "../RemoveItemIcon/RemoveItemIcon"
@@ -8,7 +8,7 @@ import useTotalPrice from "../../hooks/useTotalPrice"
 
 export default function ShoppingBag() {
     const [isDropdownActive, setIsDropdownActive] = useState(false)
-    const {bagItems} = useContext<BagItemsContextInterface | []>(BagItemsContext)
+    const {bagItems} = useBagItemsContext()
     const dropdownRef = useRef(null)
     const dropdownBtnRef = useRef(null)
     const totalPrice = useTotalPrice()

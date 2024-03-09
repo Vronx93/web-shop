@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 import styles from "./SearchEl.module.css"
 import { Product } from "../SearchResults/SearchResults"
-import { useContext, useEffect, useState } from "react"
-import { BagItemsContext } from "../../contexts/bagItemsContext"
+import { useEffect, useState } from "react"
+import { useBagItemsContext } from "../../contexts/BagItemsContext"
 import AddToBagBtn from "../AddToBagBtn/AddToBagBtn"
 
 export default function SearchEl({el} : {el: Product}) {
-    const {bagItems} = useContext(BagItemsContext)
+    const {bagItems} = useBagItemsContext()
     const [quantity, setQuantity] = useState<number>(1)
 
     useEffect(() => {

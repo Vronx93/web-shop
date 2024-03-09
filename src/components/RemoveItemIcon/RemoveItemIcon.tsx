@@ -1,10 +1,9 @@
-import { useContext } from "react"
 import { Product } from "../SearchResults/SearchResults"
 import styles from "./RemoveItemIcon.module.css"
-import { BagItemsContext } from "../../contexts/bagItemsContext"
+import { useBagItemsContext } from "../../contexts/BagItemsContext"
 
 export default function RemoveItemIcon({item} : {item : Product}) {
-    const {setBagItems} = useContext(BagItemsContext)
+    const {setBagItems} = useBagItemsContext()
 
     function handleRemoveIconClick(event : any) {
         setBagItems((prevBagItems: Product [] | []) => prevBagItems.filter((item : Product) => item.id !== parseInt(event.target.id)))
