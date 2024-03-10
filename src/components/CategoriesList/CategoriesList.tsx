@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useRef, useState } from "react"
+import { SetStateAction, useEffect, useMemo, useRef, useState } from "react"
 import { getAllCategories } from "../../api"
 import Category from "../Category/Category"
 import styles from "./CategoriesList.module.css"
@@ -26,9 +26,9 @@ export default function CategoriesList({containerClassName, listStyle, isDropdow
         if(isDropdownActive){
             document.addEventListener('mousedown',closeDropdownOnOutsideClick)}
         
-            return () => {
+        return () => {
                 document.removeEventListener("mousedown", closeDropdownOnOutsideClick)
-            }
+        }
         }, [categoriesRef, closeDropdownOnOutsideClick]
     )
 
@@ -38,16 +38,20 @@ export default function CategoriesList({containerClassName, listStyle, isDropdow
         }
     }
 
-    const categories = categoryData?.map((cat : string) =>
-        <Category
-            key={cat}
-            name={cat}
-            setIsDropdownActive={setIsDropdownActive}
-        />)
+    const categories = useMemo(() => {
+        return(
+            categoryData?.map((cat : string) =>
+                <Category
+                key={cat}
+                name={cat}
+                setIsDropdownActive={setIsDropdownActive}
+            />)
+        )
+    }, [categoryData]) 
 
     return(
         <div ref={categoriesRef} className={containerStyle}>
-            <ul className={ulStyle}>
+            <ul data-testid="categories-list" className={ulStyle}>
                 {categories}
             </ul>
         </div>
