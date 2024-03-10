@@ -1,12 +1,6 @@
 import { useLocation, useSearchParams } from "react-router-dom";
 import SearchResults from "../../components/SearchResults/SearchResults";
-import { getAllCategories } from "../../api";
 import { useEffect } from "react";
-
-export async function loader() {
-    const categories = await getAllCategories()
-    console.log("Loader CATEGORIES", categories)
-}
 
 export default function SearchResultsView() {
     const [queryParams] = useSearchParams('q')

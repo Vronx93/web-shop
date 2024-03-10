@@ -9,7 +9,7 @@ export default function CheckoutForm() {
     return(
         <div className={styles.formContainer}>
             <CheckoutList />
-            {bagItems.bagItems.length > 0 && <StripeCheckoutBtn />}
+            {bagItems.bagItems.length > 0 && <StripeCheckoutBtn data-testid="stripe-checkout-btn"/>}
         </div>
     )
 }

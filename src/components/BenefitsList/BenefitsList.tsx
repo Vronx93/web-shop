@@ -12,7 +12,7 @@ export default function BenefitsList() {
         )
 
     return(
-        <ul className={styles.list}>  
+        <ul data-testid="benefit-list" className={styles.list}>  
             {benefits}
         </ul>
     )

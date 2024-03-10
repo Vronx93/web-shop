@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Layout from "./components/Layout/Layout"
 import Home, {loader as homeLoader} from "./pages/Home/Home"
 import ShopItemView from "./pages/ShopItemView/ShopItemView"
-import SearchResultsView, {loader as searchResultsLoader} from "./pages/SearchResultsView/SearchResultsView"
+import SearchResultsView from "./pages/SearchResultsView/SearchResultsView"
 import Checkout from "./pages/Checkout/Checkout"
 
 

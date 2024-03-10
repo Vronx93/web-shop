@@ -4,18 +4,18 @@ import Hero from "../../components/Hero/Hero";
 import { Suspense, useEffect } from "react";
 import { getRandomNumbers } from "../../utils";
 import ItemsListSlider from "../../components/ItemsListSlider/ItemsListSlider";
-import BenefitsList from "../../components/BenefitsList/BenefitsList";
+import { Product } from "../../components/SearchResults/SearchResults";
 
 export async function loader() {
     const tenRandomNumbers : number [] = await getRandomNumbers(10, 100)
     const tenRandomItems = tenRandomNumbers.map(async (number : number) =>
         await getShopItemById(number))
-    return (defer({dataPromise : tenRandomItems}))
+    return (defer({randomItems : tenRandomItems}))
 }
 
 export default function Home() {
-    const {dataPromise} = useLoaderData()
-    
+    const dataPromise = useLoaderData() as {randomItems : Product[]}
+
     useEffect(()=>{
         window.scrollTo({top: 0})
     },[])
@@ -24,10 +24,10 @@ export default function Home() {
         <>
             <Hero />
             <Suspense fallback={<h2>Loading shop items...</h2>}>
-                <Await resolve={dataPromise}>
-                    {(resolvedData) => (
+                <Await resolve={dataPromise.randomItems}>
+                    {(randomItems) => (
                         <ItemsListSlider
-                            shopItemsData={resolvedData}  
+                            shopItemsData={randomItems}  
                     />)}
                 </Await>
             </Suspense>
