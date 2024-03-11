@@ -1,7 +1,9 @@
-import { act, fireEvent, render, screen } from "@testing-library/react"
-import { useEffect, useState } from "react"
-import { handleQuantityChange } from "./CheckoutItem.utils"
-import { Product } from "../SearchResults/SearchResults"
+import { render, screen } from "@testing-library/react"
+import CheckoutItem from "./CheckoutItem"
+import { BagItemsContextProvider } from "../../contexts/BagItemsContext"
+import { Router } from "react-router-dom"
+import userEvent from "@testing-library/user-event";
+import { createMemoryHistory } from 'history';
 
 const mockItem = {
     "id": 7,
@@ -17,46 +19,27 @@ const mockItem = {
     "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
 }
 
-const TestComponent = ({item} : {item: Product}) => {
-    const [bagItems, setBagItems] = useState([item])
-    const [quantity, setQuantity] = useState(item.quantity)
-    const mockEvent = {type: "change"}
-    const handleQuantityChangeMock = vi.fn(() => handleQuantityChange(mockEvent, setQuantity, setBagItems))
+describe("CheckoutItem component", () => {
+    const history = createMemoryHistory()
+    render(<Router location={history.location} navigator={history}><CheckoutItem item={mockItem} /></Router>, {wrapper: BagItemsContextProvider})
+    const quantityInput = screen.getByRole("spinbutton")
+    const price = screen.getByTestId("price")
+    const link = screen.getByRole("link")
+    history.push = vi.fn()
+    const user = userEvent.setup()
 
-    useEffect(() => {
-        setQuantity(5)
-    }, [])
-    
-
-    return(
-        <div>
-            <span>{bagItems[0].title}</span>
-            <input data-testid="quantity-input" onChange={handleQuantityChangeMock} value={quantity} id={(bagItems[0].id.toString())}/>
-            <span data-testid="total-price">{bagItems[0].price * quantity}</span>
-            <span data-testid="bag-items-quantity">{bagItems[0].quantity}</span>
-        </div>
-    )
-}
-
-render(<TestComponent item={mockItem} />)
-const inputQuantity = await screen.findByTestId("quantity-input") as HTMLInputElement
-const totalPrice = await screen.findByTestId("total-price")
-const bagItemQuantity = await screen.findByTestId("bag-items-quantity")
-
-describe("Handle quantity change util function", () => {
-
-    test("quantity input should be in the document", () => {
-        expect(inputQuantity).toBeInTheDocument()
+    test("should display correct price on load and after input change", async () => {
+        //check if component loads with correct starting quantity
+        expect(quantityInput.value).toBe("3")
+        //check if component display correct price on load
+        expect(price.textContent).toBe("$4497")
+        //check if price updates on change quantity
+        await user.clear(quantityInput)
+        await user.type(quantityInput, "5")
+        expect(price.textContent).toBe("$7495")
     })
-
-    test("should correctly set input", () => {
-        expect(inputQuantity.value).toBe("5")
+    test("should redirect to the clicked item after link click", async () => {
+        expect(link).toHaveProperty("pathname", `/product/${mockItem.id}`)
     })
-
-    test("should correctly calculate total price", () => {
-        expect(totalPrice.textContent).toBe("7495")
-    })
-
-
 })
 

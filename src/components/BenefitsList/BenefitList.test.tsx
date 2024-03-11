@@ -3,7 +3,7 @@ import Footer from "../Footer/Footer"
 
 describe("BenefitList component", () => {
     render(<Footer />)
-    const benefitList = screen.getByTestId("benefit-list")
+    const benefitList = screen.getByRole("list")
 
     test("should be rendered in Footer component", () => {
         expect(benefitList).toBeInTheDocument()

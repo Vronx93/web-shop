@@ -17,14 +17,15 @@ export default function CheckoutList() {
 
     return(
         <>
+            {renderElements.length > 0 && 
             <ul className={styles.list}>
                 {renderElements}
-            </ul>
+            </ul>}
             {
                 renderElements.length > 0 ? 
                     <p className={styles.total}>Total: ${totalPrice}</p>
                     : 
-                    <h2>You don't have any items in your shopping bag yet.</h2>
+                    <h2 data-testid="no-items">You don't have any items in your shopping bag yet.</h2>
             }
         </>
     )
