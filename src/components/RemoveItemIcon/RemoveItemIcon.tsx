@@ -9,6 +9,6 @@ export default function RemoveItemIcon({item} : {item : Product}) {
         setBagItems((prevBagItems: Product [] | []) => prevBagItems.filter((item : Product) => item.id !== parseInt(event.target.id)))
     }
     return(
-        <img id={(item.id).toString()} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt="Remove icon" />
+        <img id={(item.id).toString()} tabIndex={0} onClick={(event) => handleRemoveIconClick(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt={`Remove icon for ${item.title}`} />
     )
 }

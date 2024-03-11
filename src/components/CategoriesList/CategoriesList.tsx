@@ -15,6 +15,16 @@ export default function CategoriesList({containerClassName, listStyle, isDropdow
     const categoriesRef = useRef(null)
     const containerStyle = containerClassName || styles.categoriesContainer
     const ulStyle = listStyle || styles.list
+    const categories = useMemo(() => {
+        return(
+            categoryData?.map((cat : string) =>
+                <Category
+                key={cat}
+                name={cat}
+                setIsDropdownActive={setIsDropdownActive}
+            />)
+        )
+    }, [categoryData]) 
 
     useEffect(() => {
         getAllCategories()
@@ -38,20 +48,9 @@ export default function CategoriesList({containerClassName, listStyle, isDropdow
         }
     }
 
-    const categories = useMemo(() => {
-        return(
-            categoryData?.map((cat : string) =>
-                <Category
-                key={cat}
-                name={cat}
-                setIsDropdownActive={setIsDropdownActive}
-            />)
-        )
-    }, [categoryData]) 
-
     return(
         <div ref={categoriesRef} className={containerStyle}>
-            <ul data-testid="categories-list" className={ulStyle}>
+            <ul className={ulStyle}>
                 {categories}
             </ul>
         </div>

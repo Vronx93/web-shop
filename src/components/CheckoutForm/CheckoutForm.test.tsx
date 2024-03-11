@@ -1,12 +1,60 @@
 import { render, screen } from "@testing-library/react"
 import CheckoutForm from "./CheckoutForm"
-import { BagItemsContextProvider } from "../../contexts/BagItemsContext"
+import { BagItemsContextProvider, useBagItemsContext } from "../../contexts/BagItemsContext"
+import { mockBagItems } from "../../mocks/mocks"
+import { MemoryRouter } from "react-router-dom"
 
-describe("CheckoutForm component", () => {
-    render(<BagItemsContextProvider><CheckoutForm /></BagItemsContextProvider>)
+
+describe("CheckoutForm component with items", () => {
+
+    beforeEach(() => {
+        vi.mock("../../contexts/BagItemsContext", () => ({
+            useBagItemsContext: vi.fn(),
+            BagItemsContextProvider: vi.fn(({children}) => <div>{children}</div>)
+        }))
+
+        vi.mocked(useBagItemsContext).mockReturnValue({
+            bagItems: mockBagItems,
+            setBagItems: vi.fn(),
+        })
+
+        render(<MemoryRouter><CheckoutForm /></MemoryRouter>, {wrapper: BagItemsContextProvider})
+    })
     
+    test("should render checkout button", async () => {
+        const checkoutButton = screen.queryByRole("button")
+        expect(checkoutButton).toBeInTheDocument()
+    })
+
     test("should render CheckoutList component", () => {
-        const checkoutList = screen.getByRole("list")
-        expect(checkoutList).toBeInTheDocument()
+        const list = screen.queryByRole("list")
+        expect(list).toBeInTheDocument()
+    })
+})
+
+describe("CheckoutForm component without items", () => {
+
+    beforeEach(() => {
+        vi.mock("../../contexts/BagItemsContext", () => ({
+            useBagItemsContext: vi.fn(),
+            BagItemsContextProvider: vi.fn(({children}) => <div>{children}</div>)
+        }))
+
+        vi.mocked(useBagItemsContext).mockReturnValue({
+            bagItems: [],
+            setBagItems: vi.fn(),
+        })
+
+        render(<MemoryRouter><CheckoutForm /></MemoryRouter>, {wrapper: BagItemsContextProvider})
+    })
+    
+    test("should not render button", () => {
+        const checkoutButton = screen.queryByRole("button")
+        expect(checkoutButton).not.toBeInTheDocument()
+    })
+
+    test("should not render list", () => {
+        const list = screen.queryByRole("list")
+        expect(list).not.toBeInTheDocument()
     })
 })
