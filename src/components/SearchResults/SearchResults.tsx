@@ -4,8 +4,8 @@ import { getProductByCategory, searchProduct } from "../../api"
 import SearchEl from "../SearchEl/SearchEl"
 import usePagination from "../../hooks/usePagination"
 
-export type Product = {
-    id: number,
+export interface Product {
+    id: string,
     title: string,
     description?: string,
     price: number,
@@ -19,7 +19,7 @@ export type Product = {
     quantity: number
 }
 
-export type SearchResults = {
+export interface SearchResults {
     limit: number,
     products: Product [],
     skip: number;
@@ -29,7 +29,7 @@ export type SearchResults = {
 interface SearchResultsProps {
     searchFor : string | null,
     category? : string | null,
-    itemsData?: Product[]
+    itemsData?: Product[] | []
 }
 
 export default function SearchResults({searchFor, category, itemsData} : SearchResultsProps) {

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import CheckoutForm from "./CheckoutForm"
 import { BagItemsContextProvider, useBagItemsContext } from "../../contexts/BagItemsContext"
-import { mockBagItems } from "../../mocks/mocks"
+import { mockBagItems } from "../../test/mocks/mockData"
 import { MemoryRouter } from "react-router-dom"
 
 
