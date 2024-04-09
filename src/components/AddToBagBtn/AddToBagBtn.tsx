@@ -1,14 +1,14 @@
 import styles from "./AddToBagBtn.module.css"
 import { useBagItemsContext } from "../../contexts/BagItemsContext"
 import { Product } from "../SearchResults/SearchResults"
-import { addToBag } from "./AddToBagBtn.utils"
+// import { addToBag } from "./AddToBagBtn.utils"
 
 export default function AddToBagBtn({product, quantity} : {product: Product, quantity: number}) {
-    const {setBagItems} = useBagItemsContext()
+    const {addToBag} = useBagItemsContext()
 
     return(
         <button 
-            onClick={event => addToBag(event, setBagItems, product, quantity)} 
+            onClick={event => addToBag(event, product, quantity)} 
             className={styles.shopBtn}
             aria-label="Click to add this item to your shopping bag"
             >

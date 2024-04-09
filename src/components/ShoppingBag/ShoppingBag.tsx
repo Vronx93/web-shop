@@ -12,6 +12,7 @@ export default function ShoppingBag() {
     const dropdownRef = useRef(null)
     const dropdownBtnRef = useRef(null)
     const totalPrice = useTotalPrice()
+    console.log("ShoppingBag BAGITEMS", bagItems)
 
     function closeDropdownOnOutsideClick(event : any) {
         const refs = !dropdownRef.current?.contains(event.target) && !dropdownBtnRef.current?.contains(event.target)
@@ -48,9 +49,9 @@ export default function ShoppingBag() {
             setIsDropdownActive(!isDropdownActive)
     }
 
-    useEffect(() => {
-        localStorage.setItem("bagItems", JSON.stringify(bagItems))
-    }, [bagItems])
+    // useEffect(() => {
+    //     localStorage.setItem("bagItems", JSON.stringify(bagItems))
+    // }, [bagItems])
 
     return(
         <div>
