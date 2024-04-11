@@ -10,7 +10,7 @@ export default function SearchbarDropdown(
     {
 
     const searchbarData : any = searchData?.products
-    const dropdownRef = useRef(null)
+    const dropdownRef = useRef<HTMLDivElement>(null)
 
     function handleDropdownElClick(event : any) {
         setInputValue(event.currentTarget?.title)

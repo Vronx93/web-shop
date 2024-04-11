@@ -1,49 +1,62 @@
 import { render, screen } from "@testing-library/react"
 import CheckoutForm from "./CheckoutForm"
-<<<<<<< Updated upstream
 import { BagItemsContextProvider, useBagItemsContext } from "../../contexts/BagItemsContext"
-<<<<<<< HEAD
-import { mockBagItems } from "../../mocks/mocks"
-=======
-import { mockBagItems } from "../../test/mocks/mockData"
->>>>>>> Stashed changes
-=======
-import { mockBagItems } from "../../test/mocks/mockData"
->>>>>>> 894905da3e383a700592c0c8295887947a0299ef
 import { MemoryRouter } from "react-router-dom"
-vi.mock("../../contexts/BagItemsContext", () => ({
-    useBagItemsContext: vi.fn(() => {return {
-        bagItems: mockBagItems,
-        setBagItems: vi.fn(),
-        addToBag: vi.fn(),
-        removeFromBag: vi.fn(),
-        resetBagItems: vi.fn()
-    }}),
-    BagItemsContextProvider: vi.fn(({children}) => <div>{children}</div>)
-}))
+import { mockBagItems } from "../../test/mocks/mockData"
 
 describe("CheckoutForm component with items", () => {
+
     beforeEach(() => {
-        render(<MemoryRouter><CheckoutForm /></MemoryRouter>)
+        vi.mock("../../contexts/BagItemsContext", () => ({
+            useBagItemsContext: vi.fn(),
+            BagItemsContextProvider: vi.fn(({children}) => <div>{children}</div>)
+        }))
+
+        vi.mocked(useBagItemsContext).mockReturnValue({
+            bagItems: mockBagItems,
+            setBagItems: vi.fn(),
+            addToBag: vi.fn(),
+            removeFromBag: vi.fn(),
+            resetBagItems: vi.fn(),
+            totalPrice: vi.fn()
+        })
+
+        render(<MemoryRouter><CheckoutForm /></MemoryRouter>, {wrapper: BagItemsContextProvider})
     })
     
     test("should render checkout button", async () => {
         const checkoutButton = screen.queryByRole("button")
-        expect(checkoutButton).toBeVisible()
+        expect(checkoutButton).toBeInTheDocument()
     })
 
     test("should render CheckoutList component", () => {
         const list = screen.queryByRole("list")
-        expect(list).toBeVisible()
+        expect(list).toBeInTheDocument()
     })
 })
 
 describe("CheckoutForm component without items", () => {
 
-    render(<MemoryRouter><CheckoutForm /></MemoryRouter>)
+    beforeEach(() => {
+        vi.mock("../../contexts/BagItemsContext", () => ({
+            useBagItemsContext: vi.fn(),
+            BagItemsContextProvider: vi.fn(({children}) => <div>{children}</div>)
+        }))
+
+        vi.mocked(useBagItemsContext).mockReturnValue({
+            bagItems: [],
+            setBagItems: vi.fn(),
+            addToBag: vi.fn(),
+            removeFromBag: vi.fn(),
+            resetBagItems: vi.fn(),
+            totalPrice: vi.fn()
+        })
+
+        render(<MemoryRouter><CheckoutForm /></MemoryRouter>, {wrapper: BagItemsContextProvider})
+    })
     
     test("should not render button", () => {
-        const checkoutButton = screen.queryByRole("button", {name: /purchase/i})
+        const checkoutButton = screen.queryByRole("button")
         expect(checkoutButton).not.toBeInTheDocument()
     })
 

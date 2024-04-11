@@ -7,20 +7,10 @@ import RemoveItemIcon from "../RemoveItemIcon/RemoveItemIcon"
 
 export default function ShoppingBag() {
     const [isDropdownActive, setIsDropdownActive] = useState(false)
-<<<<<<< Updated upstream
-    const {bagItems} = useBagItemsContext()
-    const dropdownRef = useRef(null)
-    const dropdownBtnRef = useRef(null)
-    const totalPrice = useTotalPrice()
-    console.log("ShoppingBag BAGITEMS", bagItems)
-
-=======
     const {bagItems, totalPrice} = useBagItemsContext()
     const dropdownRef = useRef<HTMLDivElement>(null)
     const dropdownBtnRef = useRef<HTMLButtonElement>(null)
-    const total = totalPrice()
     
->>>>>>> Stashed changes
     function closeDropdownOnOutsideClick(event : any) {
         const refs = !dropdownRef.current?.contains(event.target) && !dropdownBtnRef.current?.contains(event.target)
         if(isDropdownActive && refs){
@@ -56,19 +46,6 @@ export default function ShoppingBag() {
             setIsDropdownActive(!isDropdownActive)
     }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    useEffect(() => {
-        localStorage.setItem("bagItems", JSON.stringify(bagItems))
-    }, [bagItems])
-=======
-    // useEffect(() => {
-    //     localStorage.setItem("bagItems", JSON.stringify(bagItems))
-    // }, [bagItems])
->>>>>>> 894905da3e383a700592c0c8295887947a0299ef
-
-=======
->>>>>>> Stashed changes
     return(
         <div>
             <button 
@@ -85,7 +62,7 @@ export default function ShoppingBag() {
                     <ul>
                         {displayItems}
                     </ul>
-                    <p className={styles.total}>Total: ${total}</p>
+                    <p className={styles.total}>Total: ${totalPrice()}</p>
                     <Link className={styles.checkoutBtn} to="/checkout" onClick={() => setIsDropdownActive(false)}>Checkout</Link>
                 </div>
                 :
@@ -95,6 +72,5 @@ export default function ShoppingBag() {
                 </div>
             }
         </div>
-
     )
 }

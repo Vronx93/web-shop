@@ -28,7 +28,7 @@ export default function ResultsFilters(
         } else if(selectedPrice === "Descending") {
             sortedProducts = products?.sort((a, b) => b.price - a.price)
         } else {
-            sortedProducts = products?.sort((a, b) => a.id - b.id)
+            sortedProducts = products?.sort((a, b) => parseInt(a.id) - parseInt(b.id))
         }
         return sortedProducts
     }

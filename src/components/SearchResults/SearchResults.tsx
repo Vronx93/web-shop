@@ -28,17 +28,8 @@ export interface SearchResults {
 
 interface SearchResultsProps {
     searchFor : string | null,
-<<<<<<< Updated upstream
-    category? : string | null,
-<<<<<<< HEAD
-    itemsData?: Product[]
-=======
     category : string | null,
     itemsData?: Product[] | []
->>>>>>> Stashed changes
-=======
-    itemsData?: Product[] | []
->>>>>>> 894905da3e383a700592c0c8295887947a0299ef
 }
 
 export default function SearchResults({searchFor, category, itemsData} : SearchResultsProps) {

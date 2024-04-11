@@ -12,7 +12,7 @@ export interface CategoriesListProps {
 
 export default function CategoriesList({containerClassName, listStyle, isDropdownActive, setIsDropdownActive } : CategoriesListProps) {
     const [categoryData, setCategoryData] = useState([])
-    const categoriesRef = useRef(null)
+    const categoriesRef = useRef<HTMLDivElement>(null)
     const containerStyle = containerClassName || styles.categoriesContainer
     const ulStyle = listStyle || styles.list
     const categories = useMemo(() => {

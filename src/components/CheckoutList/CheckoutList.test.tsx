@@ -2,6 +2,7 @@ import CheckoutList from "./CheckoutList"
 import { render, screen } from "../../test/test-utils"
 import { MemoryRouter } from "react-router-dom"
 import { mockBagItems } from "../../test/mocks/mockData"
+
 vi.mock("../../contexts/BagItemsContext", () => ({
     useBagItemsContext: vi.fn(() => {return {
         bagItems: mockBagItems,

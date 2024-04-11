@@ -1,7 +1,6 @@
 import styles from "./AddToBagBtn.module.css"
 import { useBagItemsContext } from "../../contexts/BagItemsContext"
 import { Product } from "../SearchResults/SearchResults"
-// import { addToBag } from "./AddToBagBtn.utils"
 
 export default function AddToBagBtn({product, quantity} : {product: Product, quantity: number}) {
     const {addToBag} = useBagItemsContext()

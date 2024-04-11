@@ -9,32 +9,6 @@
     margin-top: 100px;
 }
 
-/* .shopBag {
-    width: 30px;
-    margin-left: 10px;
-    filter: invert(100%);
-} */
-
-/* .shopBtn {
-    display: flex;
-    background: #e91b1b;
-    align-items: center;
-    justify-content: center;
-    padding-block: 10px;
-    padding-inline: 20px;
-    border: none;
-    border-radius: 2px;
-    box-shadow: 1px 2px 4px 0px black;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-}
-
-.shopBtn:active {
-    box-shadow: none;
-    scale: 0.98;
-} */
-
 .form {
     display: flex;
     width: 100%;
