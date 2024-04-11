@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./Searchbar.module.css"
 import { useDebounce } from "../../hooks/useDebounce"
 import { searchProduct } from "../../api"
 import SearchbarDropdown from "../SearchbarDropdown/SearchbarDropdown"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import CategoriesList from "../CategoriesList/CategoriesList"
 
 export default function Searchbar() {
@@ -13,24 +13,8 @@ export default function Searchbar() {
     const [isCategoriesDropdownActive, setIsCategoriesDropdownActive] = useState(false)
     const navigate = useNavigate()
     const debouncedValue = useDebounce(inputValue, 500)
-    const url = useLocation()
-    console.log("url", url)
-    console.log("SEARCH RESULT", searchResult)
-
-    // useEffect(() => {
-    //     function closeOnOutsideClick(event : any) {
-    //         if(isDropdownActive && !categoriesRef.current?.contains(event.target)){
-    //             setIsCategoriesDropdownActive(false)
-    //         }
-    //     }
-    //     if(isCategoriesDropdownActive){
-    //         document.addEventListener('mousedown',closeOnOutsideClick)}
-        
-    //         return () => {
-    //             document.removeEventListener("mousedown", closeOnOutsideClick)
-    //         }
-    //     }, [categoriesRef]
-    // )
+    const [searchParams] = useSearchParams()
+    const searchQuery = searchParams.get("q")
 
     useEffect(() => {
         if(debouncedValue) {
@@ -42,6 +26,14 @@ export default function Searchbar() {
         }
     }, [debouncedValue])
 
+    useEffect(() => {
+        if(searchQuery && searchQuery !== inputValue) {
+            setInputValue(searchQuery)
+        } else if(!searchQuery) {
+            setInputValue("")
+        }
+    }, [searchQuery])
+
     function handleInputChange(event : any) {
         setInputValue(event.target.value)
         if(event.target.value.length > 0) {
@@ -49,7 +41,6 @@ export default function Searchbar() {
         } else {
             setIsDropdownActive(false)
         }
-        
     }
 
     async function handleSubmit(e : any) {

@@ -2,10 +2,14 @@ import { render, screen } from "@testing-library/react"
 import CheckoutForm from "./CheckoutForm"
 <<<<<<< Updated upstream
 import { BagItemsContextProvider, useBagItemsContext } from "../../contexts/BagItemsContext"
+<<<<<<< HEAD
 import { mockBagItems } from "../../mocks/mocks"
 =======
 import { mockBagItems } from "../../test/mocks/mockData"
 >>>>>>> Stashed changes
+=======
+import { mockBagItems } from "../../test/mocks/mockData"
+>>>>>>> 894905da3e383a700592c0c8295887947a0299ef
 import { MemoryRouter } from "react-router-dom"
 vi.mock("../../contexts/BagItemsContext", () => ({
     useBagItemsContext: vi.fn(() => {return {

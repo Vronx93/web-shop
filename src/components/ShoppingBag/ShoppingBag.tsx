@@ -12,6 +12,7 @@ export default function ShoppingBag() {
     const dropdownRef = useRef(null)
     const dropdownBtnRef = useRef(null)
     const totalPrice = useTotalPrice()
+    console.log("ShoppingBag BAGITEMS", bagItems)
 
 =======
     const {bagItems, totalPrice} = useBagItemsContext()
@@ -55,10 +56,16 @@ export default function ShoppingBag() {
             setIsDropdownActive(!isDropdownActive)
     }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     useEffect(() => {
         localStorage.setItem("bagItems", JSON.stringify(bagItems))
     }, [bagItems])
+=======
+    // useEffect(() => {
+    //     localStorage.setItem("bagItems", JSON.stringify(bagItems))
+    // }, [bagItems])
+>>>>>>> 894905da3e383a700592c0c8295887947a0299ef
 
 =======
 >>>>>>> Stashed changes
