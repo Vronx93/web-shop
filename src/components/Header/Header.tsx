@@ -14,8 +14,7 @@ export default function Header() {
             <header className={styles.header}>
                 <Link to="/" className={styles.logo}>LOGO</Link>
                 <Searchbar />
-                {!isLoggedIn && <Login />}
-                {isLoggedIn && <Logout />}
+                {!isLoggedIn ? <Login /> : <Logout />}
                 <ShoppingBag />
             </header>
         </>

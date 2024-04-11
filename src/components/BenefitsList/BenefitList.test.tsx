@@ -1,11 +1,10 @@
 import { render, screen } from "@testing-library/react"
-import Footer from "../Footer/Footer"
+import BenefitsList from "./BenefitsList"
 
 describe("BenefitList component", () => {
-    render(<Footer />)
-    const benefitList = screen.getByRole("list")
-
-    test("should be rendered in Footer component", () => {
-        expect(benefitList).toBeInTheDocument()
+    test("should render list of benefits", () => {
+        render(<BenefitsList />)
+        const benefitList = screen.getByRole("list")
+        expect(benefitList).toBeVisible()
     })
 })

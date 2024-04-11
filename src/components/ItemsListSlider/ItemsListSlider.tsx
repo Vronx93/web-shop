@@ -3,29 +3,25 @@ import ShopItem from "../ShopItem/ShopItem"
 import styles from "./ItemsListSlider.module.css"
 
 export default function ItemsListSlider({shopItemsData}: any) {
-    const itemsSlider = useRef(null)
+    const itemsSlider = useRef<HTMLUListElement>(null)
     const renderedItems = shopItemsData?.map((item: any, index: Key | null | undefined) => 
         <ShopItem
             key={index} 
             itemData={item}
         />)
 
-    // console.log("renderedItems", renderedItems)
-
     const handlePrevClick = () => {
         if(itemsSlider.current) {
             itemsSlider.current.scrollLeft -= 450
         }
-        
-      }
+    }
     
-      const handleNextClick = () => {
+    const handleNextClick = () => {
         if(itemsSlider.current) {
             itemsSlider.current.scrollLeft += 450
         }
-      }
+    }
     
-
     return(
         <div className={styles.listContainer}>
             <button 

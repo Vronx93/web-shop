@@ -21,7 +21,6 @@ export async function getProductByCategory(category : string | null | undefined)
     return data
 }
 
-// | undefined
 export async function searchProduct(query : string | null) {
     const response = await fetch(`https://dummyjson.com/products/search?q=${query}&limit=0`)
     const data = response.json()

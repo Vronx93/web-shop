@@ -13,7 +13,6 @@ export default function ShopItem({ itemData} : { itemData: any}) {
     return(
         <li 
             className={styles.itemContainer}
-            tabIndex={0}
         >
             <Link to={`/product/${data.id}`} state={data}>
                 <img className={styles.thumbnailPhoto} src={data.thumbnail} alt="" />

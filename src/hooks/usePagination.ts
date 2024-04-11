@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface PaginationProps {
-    arr : any[] | JSX.Element [],
+    arr : JSX.Element [],
     itemsPerPage : number
 }
 

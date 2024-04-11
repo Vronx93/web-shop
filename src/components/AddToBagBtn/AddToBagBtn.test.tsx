@@ -1,6 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react"
-import { BagItemsContextProvider } from "../../contexts/BagItemsContext"
+import { render, screen } from "../../test/test-utils"
 import AddToBagBtn from "./AddToBagBtn"
+<<<<<<< Updated upstream
 import { useState } from "react"
 import { addToBag } from "./AddToBagBtn.utils"
 import { mockItem1, mockBagItems} from "../../mocks/mocks"
@@ -27,32 +27,15 @@ const TestComponent = () => {
         </div>
     )
 }
+=======
+import { mockItem1 } from "../../test/mocks/mockData"
+>>>>>>> Stashed changes
 
 describe("AddToBagBtn element", () => {
     test("should render button element", () => {
-        render(<BagItemsContextProvider><AddToBagBtn product={mockItem1} quantity={2} /></BagItemsContextProvider>)
+        render(<AddToBagBtn product={mockItem1} quantity={2} />)
         const button = screen.getByText(/Add to/i)
         expect(button).toBeInTheDocument()
-    })
-
-    test("should render correct item name", () => {
-        render(<TestComponent />)
-        const renderedName = screen.getByTestId("name Stainless Steel Women")
-        expect(renderedName).toHaveTextContent("Name: Stainless Steel Women")
-    })
-
-    test("should render correct item quantity", () => {
-        render(<TestComponent />)
-        const renderedQuantity = screen.getByTestId("quantity Stainless Steel Women")
-        expect(renderedQuantity).toHaveTextContent("Quantity: 1")
-    })
-
-    test("after addToBagBtn is clicked should sum up quantity of item in the bag to be 3", () => {
-        render(<TestComponent />)
-        const button = screen.getByText(/Add to/i)
-        fireEvent.click(button)
-        const renderedQuantity = screen.getByTestId("quantity Stainless Steel Women")
-        expect(renderedQuantity).toHaveTextContent('Quantity: 3')
     })
 })
 

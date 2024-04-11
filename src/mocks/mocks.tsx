@@ -1,5 +1,5 @@
 export const mockItem1 = {
-    "id": 70,
+    "id": "70",
     "title": "Stainless Steel Women",
     "price": 35,
     "thumbnail": "https://cdn.dummyjson.com/product-images/70/thumbnail.jpg",
@@ -12,7 +12,7 @@ export const mockItem1 = {
 }
 
 export const mockItem2 = {
-    "id": 35,
+    "id": "35",
     "title": "3 DOOR PORTABLE",
     "price": 41,
     "thumbnail": "https://cdn.dummyjson.com/product-images/35/thumbnail.jpg",
@@ -27,3 +27,9 @@ export const mockItem2 = {
 }
 
 export const mockBagItems = [mockItem1, mockItem2]
+
+export const mockBenefit = {
+    "title" : "Warranty",
+    "description": "12 month warranty for all our products!",
+    "imgUrl": "src/assets/images/warranty-icon.svg"
+}

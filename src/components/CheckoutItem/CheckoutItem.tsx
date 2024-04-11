@@ -26,12 +26,12 @@ export default function CheckoutItem({item} : CheckoutItemProps) {
             </Link>
             <div className={styles.priceQuantityContainer}>
                 <input 
-                    id={item.id.toString()} 
+                    id={item.id} 
                     value={quantity} 
                     min={1} 
                     max={99} 
                     type="number" 
-                    onChange={(event) => handleQuantityChange(event, setQuantity, setBagItems)} />
+                    onChange={(event) => handleQuantityChange(event, setQuantity, setBagItems, bagItems)} />
                 {
                     quantity ?
                         <p data-testid="price">${item.price*quantity}</p>

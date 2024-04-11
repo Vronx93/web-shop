@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useMemo, useRef, useState } from "react"
+import { SetStateAction, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 import { getAllCategories } from "../../api"
 import Category from "../Category/Category"
 import styles from "./CategoriesList.module.css"
@@ -26,7 +26,7 @@ export default function CategoriesList({containerClassName, listStyle, isDropdow
         )
     }, [categoryData]) 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         getAllCategories()
             .then((resolvedData) => 
                 setCategoryData(resolvedData))

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import styles from "./SearchResults.module.css"
 import { getProductByCategory, searchProduct } from "../../api"
 import SearchEl from "../SearchEl/SearchEl"
@@ -28,23 +28,25 @@ export type SearchResults = {
 
 interface SearchResultsProps {
     searchFor : string | null,
+<<<<<<< Updated upstream
     category? : string | null,
     itemsData?: Product[]
+=======
+    category : string | null,
+    itemsData?: Product[] | []
+>>>>>>> Stashed changes
 }
 
 export default function SearchResults({searchFor, category, itemsData} : SearchResultsProps) {
     const [result, setResult] = useState<SearchResults | null>(null)
-    const [sortedResults, setSortedResults] = useState<null | Product[]>(null)
-    // const [isCategoriesDropdownActive, setIsCategoriesDropdownActive] = useState(false)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         async function loadResults() {
-            const search = await searchProduct(searchFor)
-            const categorySearch = await getProductByCategory(category)
-
             if(searchFor) {
+                const search = await searchProduct(searchFor)
                 setResult(search)
             } else if(category) {
+                const categorySearch = await getProductByCategory(category)
                 setResult(categorySearch)
             } else {
                 setResult(null)
@@ -53,19 +55,14 @@ export default function SearchResults({searchFor, category, itemsData} : SearchR
     loadResults()
     }, [searchFor, category])
 
-    const renderElements : JSX.Element [] | JSX.Element = sortedResults ? 
-        sortedResults.map((el) => (
-            <SearchEl key={el.id} el={el} />
-            )) 
-            :  
-            result?.products && result.products?.length > 0 ? 
-                result.products.map((el) => (
-                    <SearchEl key={el.id} el={el} />
-            ))
-        // : <p>Loading...</p> 
-            : itemsData ? itemsData.map((itemData) => 
-                <SearchEl key={itemData.id} el={itemData}/>)
-                : <p>No results match this search. Try again or contact with our support.</p>
+    const renderElements : JSX.Element [] | JSX.Element = result?.products && result.products?.length > 0 
+        ? 
+            result.products.map((el) => (
+                <SearchEl key={el.id} el={el} />
+        ))
+        : itemsData ? itemsData.map((itemData) => 
+            <SearchEl key={itemData.id} el={itemData}/>)
+            : [<p>No results match this search. Try again or contact with our support.</p>]
 
     const {        
         currentIndex,

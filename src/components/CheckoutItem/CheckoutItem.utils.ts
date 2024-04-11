@@ -1,15 +1,13 @@
 import { Product } from "../SearchResults/SearchResults"
 
-export function handleQuantityChange(event : any, setQuantity: Function, setBagItems: Function) {
+export async function handleQuantityChange(event : any, setQuantity: Function, setBagItems: Function, bagItems: Product[] | []) {
+    const updatedBagItems = bagItems.map((bagItem) => {
+        if(event.currentTarget?.id === (bagItem?.id).toString()) {
+            return {...bagItem, quantity: event.currentTarget.value}
+        } else {
+            return bagItem
+        }
+    }) 
     setQuantity(parseInt(event.currentTarget.value))
-    setBagItems((prevBagItems : Product[] | []) => {
-        const updatedBagItems = prevBagItems.map((prevItem) => {
-            if(parseInt(event.currentTarget?.id) === prevItem?.id) {
-                return {...prevItem, quantity: event.currentTarget.value}
-            } else {
-                return prevItem
-            }
-        }) 
-        return updatedBagItems
-    })
+    setBagItems(updatedBagItems)
 }
