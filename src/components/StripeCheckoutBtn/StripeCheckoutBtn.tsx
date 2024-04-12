@@ -1,13 +1,13 @@
 import StripeCheckout from "react-stripe-checkout"
 import { useBagItemsContext } from "../../contexts/BagItemsContext";
-import styles from "./StripeCheckoutBtn.module.css"
-import { useNavigate } from "react-router-dom";
+// import styles from "./StripeCheckoutBtn.module.css"
+// import { useNavigate } from "react-router-dom";
 
 export default function StripeCheckoutBtn() {
   const {totalPrice, resetBagItems} = useBagItemsContext()
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleToken = (token : {}) => {
-      // You can handle the token received from Stripe here
+      // handle the token received from Stripe here
       // navigate to success?
       console.log("TOKEN", token);
       if(token) {
