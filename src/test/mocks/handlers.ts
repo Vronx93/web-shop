@@ -1,32 +1,6 @@
 import { http, HttpResponse } from "msw";
 
 export const successGetHandlers = [
-    http.get(`https://dummyjson.com/products/:id`, () => {
-        return HttpResponse.json(
-            {
-                "id": 55,
-                "title": "Money Heist Printed Summer T Shirts",
-                "description": "Fabric Jercy, Size: M & L Wear Stylish Dual Stiched",
-                "price": 66,
-                "discountPercentage": 15.97,
-                "rating": 4.9,
-                "stock": 122,
-                "brand": "The Warehouse",
-                "category": "mens-shirts",
-                "thumbnail": "some image links",
-                "images": [
-                    "image link",
-                    "image link",
-                    "image link",
-                    "image link",
-                    "image link"
-                ]
-            }, 
-            {
-                status: 200
-            }
-        )
-    }),
     http.get("https://dummyjson.com/products/categories", () => {
         return HttpResponse.json([
             "smartphones",
@@ -152,6 +126,32 @@ export const successGetHandlers = [
                     ]
                 }
             ]
+        )
+    }),
+    http.get(`https://dummyjson.com/products/:id`, () => {
+        return HttpResponse.json(
+            {
+                "id": 55,
+                "title": "Money Heist Printed Summer T Shirts",
+                "description": "Fabric Jercy, Size: M & L Wear Stylish Dual Stiched",
+                "price": 66,
+                "discountPercentage": 15.97,
+                "rating": 4.9,
+                "stock": 122,
+                "brand": "The Warehouse",
+                "category": "mens-shirts",
+                "thumbnail": "some image links",
+                "images": [
+                    "image link",
+                    "image link",
+                    "image link",
+                    "image link",
+                    "image link"
+                ]
+            }, 
+            {
+                status: 200
+            }
         )
     }),
     // http.get(`https://dummyjson.com/products/search?q=:query&limit=0`, () => {

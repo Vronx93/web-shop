@@ -12,7 +12,7 @@ describe("CategoriesList component", () => {
     
     test("should render list items when dropdown is active", async () => {
         render(<MemoryRouter><CategoriesList isDropdownActive={true} setIsDropdownActive={() => {}} /></MemoryRouter>)
-        const categoriesList = screen.queryAllByRole("listitem")
+        const categoriesList = await screen.findAllByRole("listitem")
         expect(categoriesList).toHaveLength(20)
     })
 })
