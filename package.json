@@ -2,6 +2,7 @@
   "name": "web-shop",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://vronx93.github.io/web-shop",
   "type": "module",
   "scripts": {
     "dev": "vite",
