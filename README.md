@@ -1,7 +1,7 @@
 Link: https://vronx93.github.io/web-shop/
 
 I create this app to practice react, react router, work with api and learn how to write unit tests.
-In this app user is able to:
+In this app user should be able to:
 - log in/ log out (it doesnt matter if user is logged in or not. I worked with dummydata server and I couldn't do real updates to the db (for example - shopping bag), so I decided to use localStorage for shopping bag and control if user is logged in)
 - use searchbar to search items
 - use categories dropdown to display list of items of selected category
