@@ -1,17 +1,54 @@
-Link: https://vronx93.github.io/web-shop/
+# Web Shop
 
-I create this app to practice react, react router, work with api and learn how to write unit tests.
-In this app user should be able to:
-- log in/ log out (it doesnt matter if user is logged in or not. I worked with dummydata server and I couldn't do real updates to the db (for example - shopping bag), so I decided to use localStorage for shopping bag and control if user is logged in)
-- use searchbar to search items
-- use categories dropdown to display list of items of selected category
-- add and remove items from shopping bag
-- change quantity of added items before checkout
-- enter shop item page with item content
-- go to stripe checkout (implemented without any server just as demo, when you click on "Pay with card" button, you can also click "TEST MODE" in right top corner to see avaiable card numbers to finish payment)
+This project is a React application developed to practice various skills including React, React Router, API integration, and unit testing. It simulates an online shopping experience with features like user authentication, searching for items, adding items to a shopping bag, and more.
 
-Available scripts:
--npm run dev:
-  runs the app in the development mode
--npm test:
-  run launches the test runner
+## Demo
+[View Demo](https://vronx93.github.io/web-shop/)
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/vronx93/web-shop.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd web-shop
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Run the development server:
+   ```
+   npm run dev
+   ```
+
+## Usage
+
+Once the project is running locally, you can:
+
+- Log in/log out using dummy data (user authentication).
+- Use the search bar to find items.
+- Use the categories dropdown to filter items by category.
+- Add and remove items from the shopping bag.
+- Adjust the quantity of items in the shopping bag before checkout.
+- View detailed information about individual items.
+- Proceed to the Stripe checkout for payment (implemented as a demo).
+
+### Note:
+- The app is optimized for devices with a width of 1150px and higher. Mobile view is planned for future development.
+
+## Available Scripts
+
+- `npm run dev`: Runs the app in development mode.
+- `npm test`: Launches the test runner.
+
+## Future Plans
+
+In the future, I plan to:
+
+- Implement a mobile-responsive design.
+- Enhance the user interface and experience.
