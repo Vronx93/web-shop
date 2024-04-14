@@ -11,3 +11,5 @@ export async function getRandomNumbers(howMany : number, maxNumber : number) {
     }
     return randomNumbers()
 }
+
+export const filePath = ""

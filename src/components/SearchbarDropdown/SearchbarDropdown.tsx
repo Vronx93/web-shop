@@ -41,7 +41,7 @@ export default function SearchbarDropdown(
             className={styles.dropdownEl}
             onClick={(event => handleDropdownElClick(event))}
         >
-            <Link state={product} to={`/product/${product.id}`}>
+            <Link state={product} to={`/web-shop/product/${product.id}`}>
                 <p>{product?.title}</p>
             </Link>      
         </li>)

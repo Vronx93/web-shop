@@ -10,7 +10,7 @@ import Checkout from "./pages/Checkout/Checkout"
 
 const router = createBrowserRouter([
   {
-    path : "/",
+    path : "/web-shop",
     element: <Layout/>,
     children: [
       {

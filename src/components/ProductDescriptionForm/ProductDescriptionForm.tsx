@@ -8,7 +8,6 @@ import { Product } from "../SearchResults/SearchResults"
 export default function ProductDescription() {
     const {bagItems} = useBagItemsContext()
     const locationData = useLocation()
-    console.log("LocationData", locationData.state)
     const [quantity, setQuantity] = useState(1)
     const product : Product = locationData.state
 

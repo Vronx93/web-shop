@@ -52,7 +52,7 @@ export default function Login() {
                             className={styles.closeBtn}
                             onClick={handleCloseForm}
                         >
-                            <img src="../../src/assets/images/close-btn.svg" alt="Closing symbol" />
+                            <img src="/web-shop/assets/images/close-btn.svg" alt="Closing symbol" />
                         </button>
                         {errorMessage && <p className={styles.errorMsg}>{errorMessage}</p>}
                         <div className={styles.inputContainer}>

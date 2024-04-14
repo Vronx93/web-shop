@@ -14,7 +14,7 @@ export default function ShopItem({ itemData} : { itemData: any}) {
         <li 
             className={styles.itemContainer}
         >
-            <Link to={`/product/${data.id}`} state={data}>
+            <Link to={`/web-shop/product/${data.id}`} state={data}>
                 <img className={styles.thumbnailPhoto} src={data.thumbnail} alt="" />
                 <div className={styles.titlePriceContainer}>
                     <span className={styles.title}>{data.title}</span>

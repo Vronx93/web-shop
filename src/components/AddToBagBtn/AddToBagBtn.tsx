@@ -11,7 +11,7 @@ export default function AddToBagBtn({product, quantity} : {product: Product, qua
             className={styles.shopBtn}
             aria-label="Click to add this item to your shopping bag"
             >
-            Add to <img className={styles.shopBag} src="../../src/assets/images/shop-bag.svg" alt="Shopping bag" />
+            Add to <img className={styles.shopBag} src="/web-shop/assets/images/shop-bag.svg" alt="Shopping bag" />
         </button>
     )
 }

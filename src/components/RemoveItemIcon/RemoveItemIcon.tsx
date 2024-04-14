@@ -6,6 +6,6 @@ export default function RemoveItemIcon({item} : {item : Product}) {
     const {removeFromBag} = useBagItemsContext()
 
     return(
-        <img id={item.id} tabIndex={0} onClick={(event) => removeFromBag(event)} className={styles.trashIcon} src="../../src/assets/images/trash-img.svg" alt={`Remove icon for ${item.title}`} />
+        <img id={item.id} tabIndex={0} onClick={(event) => removeFromBag(event)} className={styles.trashIcon} src="/web-shop/assets/images/trash-img.svg" alt={`Remove icon for ${item.title}`} />
     )
 }

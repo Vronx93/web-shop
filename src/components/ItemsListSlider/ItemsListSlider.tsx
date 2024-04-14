@@ -28,7 +28,7 @@ export default function ItemsListSlider({shopItemsData}: any) {
                 onClick={handlePrevClick}
                 className={styles.prevBtn}
             >
-                <img src="src/assets/images/left-arrow.svg" alt="Left arrow" />
+                <img src="/web-shop/assets/images/left-arrow.svg" alt="Left arrow" />
             </button>
             <ul ref={itemsSlider} className={styles.list}>
                 {renderedItems}
@@ -37,7 +37,7 @@ export default function ItemsListSlider({shopItemsData}: any) {
                 onClick={handleNextClick}
                 className={styles.nextBtn}
             >
-                <img src="src/assets/images/right-arrow.svg" alt="Right arrow" />
+                <img src="/web-shop/assets/images/right-arrow.svg" alt="Right arrow" />
             </button>
             
         </div>

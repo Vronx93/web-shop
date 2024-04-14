@@ -15,7 +15,7 @@ export default function SearchEl({el} : {el: Product}) {
     
     return(
         <li className={styles.listEl}>
-            <Link to={`/product/${el.id}`} state={el}>
+            <Link to={`/web-shop/product/${el.id}`} state={el}>
                 <div className={styles.imgContainer}>
                     <img src={el.thumbnail} alt={`${el.title}`} />
                 </div>

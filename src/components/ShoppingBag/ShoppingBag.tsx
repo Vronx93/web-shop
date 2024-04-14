@@ -31,7 +31,7 @@ export default function ShoppingBag() {
     const displayItems = bagItems
         .map((item : Product) =>
         <li key={item.id} className={styles.listItemContainer}>
-            <Link to={`/product/${item.id}`} state={item} className={styles.bagElContainer}>
+            <Link to={`/web-shop/product/${item.id}`} state={item} className={styles.bagElContainer}>
                 <div className={styles.bagEl}>
                     <span>{item.title}</span>
                     <span>{item.quantity}</span>
@@ -53,7 +53,7 @@ export default function ShoppingBag() {
                 onClick={handleBagClick}
                 ref={dropdownBtnRef}
             >
-                <img src="../../src/assets/images/red-bag.svg" alt="Your shopping bag" />
+                <img src="/web-shop/assets/images/red-bag.svg" alt="Your shopping bag" />
             </button>
             {
                 displayItems.length > 0 ?
@@ -63,7 +63,7 @@ export default function ShoppingBag() {
                         {displayItems}
                     </ul>
                     <p className={styles.total}>Total: ${totalPrice()}</p>
-                    <Link className={styles.checkoutBtn} to="/checkout" onClick={() => setIsDropdownActive(false)}>Checkout</Link>
+                    <Link className={styles.checkoutBtn} to="/web-shop/checkout" onClick={() => setIsDropdownActive(false)}>Checkout</Link>
                 </div>
                 :
                 isDropdownActive && 

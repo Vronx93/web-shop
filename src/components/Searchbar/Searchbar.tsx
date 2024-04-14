@@ -47,7 +47,7 @@ export default function Searchbar() {
         e.preventDefault()
         setIsDropdownActive(false)
         if(inputValue.length > 0) {
-            return navigate(`/search/?q=${inputValue}`)
+            return navigate(`/web-shop/search/?q=${inputValue}`)
         }
     }
 
@@ -63,7 +63,7 @@ export default function Searchbar() {
                 >
                 </input>
                 <button type="button" className={styles.categoriesBtn} onClick={() => setIsCategoriesDropdownActive(!isCategoriesDropdownActive)}>Categories</button>
-                <button className={styles.searchBtn}><img src="../../src/assets/images/search-icon.svg" alt="Search icon" /></button>
+                <button className={styles.searchBtn}><img src="/web-shop/assets/images/search-icon.svg" alt="Search icon" /></button>
             </form>
             {
                 isDropdownActive &&

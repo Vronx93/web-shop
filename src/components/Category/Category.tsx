@@ -16,7 +16,7 @@ export default function Category({name, setIsDropdownActive} : {name: string, se
 
     return(
         <li className={styles.categoryContainer} >
-            <Link to={`/search/?category=${name}`} id={name} onClick={(event) =>handleCategoryClick(event)} className={styles.categoryBtn} state={itemsOfCategory}>
+            <Link to={`/web-shop/search/?category=${name}`} id={name} onClick={(event) =>handleCategoryClick(event)} className={styles.categoryBtn} state={itemsOfCategory}>
                     {name}
             </Link>
         </li>

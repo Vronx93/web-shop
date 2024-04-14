@@ -12,7 +12,7 @@ export default function Header() {
     return(
         <>
             <header className={styles.header}>
-                <Link to="/" className={styles.logo}>LOGO</Link>
+                <Link to="/web-shop" className={styles.logo}>LOGO</Link>
                 <Searchbar />
                 {!isLoggedIn ? <Login /> : <Logout />}
                 <ShoppingBag />

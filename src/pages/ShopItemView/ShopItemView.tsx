@@ -11,7 +11,6 @@ export default function ShopItemView() {
         window.scrollTo({top: 0})
     },[])
 
-    console.log("ShopItemViewLocationData", data)
     return(
         <>
             <ProductImages
