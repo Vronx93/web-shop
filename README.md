@@ -1,30 +1,17 @@
-# React + TypeScript + Vite
+Link: https://vronx93.github.io/web-shop/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I create this app to practice react, react router, work with api and learn how to write unit tests.
+In this app user is able to:
+- log in/ log out (it doesnt matter if user is logged in or not. I worked with dummydata server and I couldn't do real updates to the db (for example - shopping bag), so I decided to use localStorage for shopping bag and control if user is logged in)
+- use searchbar to search items
+- use categories dropdown to display list of items of selected category
+- add and remove items from shopping bag
+- change quantity of added items before checkout
+- enter shop item page with item content
+- go to stripe checkout (implemented without any server just as demo, when you click on "Pay with card" button, you can also click "TEST MODE" in right top corner to see avaiable card numbers to finish payment)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Available scripts:
+-npm run dev:
+  runs the app in the development mode
+-npm test:
+  run launches the test runner
